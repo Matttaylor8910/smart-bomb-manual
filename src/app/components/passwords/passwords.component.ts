@@ -17,6 +17,7 @@ const WORDS = [
 export class PasswordsComponent {
   WORDS_PER_COLUMN = 6;
 
+  allWords = WORDS;
   words = [...WORDS];
   options = [];
 
