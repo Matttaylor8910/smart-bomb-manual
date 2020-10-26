@@ -1,27 +1,30 @@
 <div class="module-container">
   <div class="module">
     <div class="column" *ngFor="let column of columns; index as i" [class.selected]="selectedColumn === i">
-      <div class="led" [class.lit]="column.led" (click)="column.led = !column.led"></div>
+      <ion-button class="led" [class.lit]="column.led" (click)="column.led = !column.led"></ion-button>
       <div class="wires" (click)="selectColumn(i)">
         <div class="wire {{wire}}" *ngFor="let wire of column.wires"></div>
       </div>
-      <div class="star" (click)="column.star = !column.star">
+      <ion-button class="star" (click)="column.star = !column.star">
+        <ion-icon *ngIf="column.star" slot="icon-only" name="star"></ion-icon>
+      </ion-button>
+      <!-- <div class="star" (click)="column.star = !column.star">
         <div *ngIf="column.star">★</div>
-      </div>
+      </div> -->
       <div class="cut-status">
-        <div [class.faded]="!shouldCut(column)">CUT</div>
+        <span [class.faded]="!shouldCut(column)">CUT</span>
       </div>
     </div>
   </div>
   <div class="buttons colors">
-    <div class="button red" (click)="toggleColor('red')">RED</div>
-    <div class="button blue" (click)="toggleColor('blue')">BLUE</div>
-    <div class="button white" (click)="toggleColor('white')">WHITE</div>
-    <div class="button" (click)="selectNextColumn()">NEXT</div>
+    <ion-button color="danger" (click)="toggleColor('red')">Red</ion-button>
+    <ion-button color="primary" (click)="toggleColor('blue')">Blue</ion-button>
+    <ion-button color="medium" (click)="toggleColor('white')">White</ion-button>
+    <ion-button fill="clear" (click)="selectNextColumn()">Next</ion-button>
   </div>
   <div class="buttons settings">
-    <div class="button" [class.selected]="bombStateService.parallel" (click)="bombStateService.parallel = !bombStateService.parallel">PARALLEL PORT</div>
-    <div class="button" [class.selected]="bombStateService.batteries" (click)="bombStateService.batteries = !bombStateService.batteries">2 OR MORE BATTERIES</div>
-    <div class="button" [class.selected]="bombStateService.serial" (click)="bombStateService.serial = !bombStateService.serial">EVEN SERIAL</div>
+    <ion-button color="dark" [fill]="bombStateService.parallel ? 'solid' : 'outline'" (click)="bombStateService.parallel = !bombStateService.parallel">Parallel Port</ion-button>
+    <ion-button color="dark" [fill]="bombStateService.batteries ? 'solid' : 'outline'" (click)="bombStateService.batteries = !bombStateService.batteries">2+ Batteries</ion-button>
+    <ion-button color="dark" [fill]="bombStateService.serial ? 'solid' : 'outline'" (click)="bombStateService.serial = !bombStateService.serial">Even Serial</ion-button>
   </div>
 </div>

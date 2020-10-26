@@ -16,15 +16,13 @@
       padding: 5px;
 
       .led {
-        background-color: #000;
-        cursor: pointer;
-        border-radius: 50%;
-        border: solid 1px;
         width: 30px;
         height: 30px;
+        --background: #616161;
+        --border-radius: 50%;
 
         &.lit {
-          background-color: #FFEC21;
+          --background: #ffeb3b;
         }
       }
 
@@ -41,35 +39,32 @@
           margin: 2px;
           width: 5px;
           height: 100%;
-          border: solid 1px;
 
           &.red {
-            background-color: #EE0000;
+            background-color: #eb445a;
           }
           &.blue {
-            background-color: #0000EE;
+            background-color: #3880ff;
           }
           &.white {
-            background-color: #EEEEEE;
+            border: solid 1px;
+            background-color: #f4f5f8;
           }
         }
       }
 
       .star {
-        cursor: pointer;
-        background-color: #CD853F;
-        border: solid 1px;
         width: 30px;
         height: 30px;
-        font-size: 20px;
-        line-height: 30px;
-        text-align: center;
-        vertical-align: center;
+
+        &::part(native) {
+          padding: 5px;
+        }
+
+        --background: #a98274;
       }
 
       .cut-status {
-        font-family: Helvetica, Arial, sans-serif;
-        font-weight: bold;
         text-align: center;
         padding: 5px;
 
@@ -88,39 +83,15 @@
 
   .buttons {
     width: 100%;
-    margin: 5px;
+    padding: 5px;
     display: flex;
     justify-content: space-between;
 
-    .button {
-      cursor: pointer;
-      border: solid 3px;
-      padding: 5px;
-      margin: 5px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-
-      &.selected {
-        background-color: #AAAAAA;
-      }
-      &.red {
-        background-color: #ED8787;
-      }
-      &.blue {
-        background-color: #7BA9F2;
-      }
-      &.white {
-        background-color: #EDEDED;
-      }
-    }
-
-    &.colors .button {
+    &.colors ion-button {
       width: 20%;
     }
 
-    &.settings .button {
+    &.settings ion-button {
       width: 30%;
     }
   }
