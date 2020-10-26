@@ -1,7 +1,6 @@
 {
   "editor.formatOnSave": true,
   "clang-format.fallbackStyle": "Google",
-  "clang-format.executable": "${workspaceRoot}/node_modules/clang-format/bin/darwin_x64/clang-format",
   "editor.tabSize": 2,
   "files.exclude": {
     "**/.git": true,
