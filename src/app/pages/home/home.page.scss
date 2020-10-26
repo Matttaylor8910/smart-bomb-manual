@@ -1,0 +1,9 @@
+.modules {
+  display: flex;
+  justify-content: center;
+
+  .module {
+    margin: 20px;
+    border: 1px solid #ccc;
+  }
+}

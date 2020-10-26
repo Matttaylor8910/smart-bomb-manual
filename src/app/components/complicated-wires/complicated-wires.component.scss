@@ -1,0 +1,127 @@
+.module-container {
+  display: flex;
+  flex-direction: column;
+
+  .module {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+
+    .column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 12%;
+      padding: 5px;
+
+      .led {
+        background-color: #000;
+        cursor: pointer;
+        border-radius: 50%;
+        border: solid 1px;
+        width: 30px;
+        height: 30px;
+
+        &.lit {
+          background-color: #FFEC21;
+        }
+      }
+
+      .wires {
+        cursor: pointer;
+        display: flex;
+        height: 300px;
+        width: 100%;
+        margin: 5px 0px;
+        align-items: center;
+        justify-content: center;
+
+        .wire {
+          margin: 2px;
+          width: 5px;
+          height: 100%;
+          border: solid 1px;
+
+          &.red {
+            background-color: #EE0000;
+          }
+          &.blue {
+            background-color: #0000EE;
+          }
+          &.white {
+            background-color: #EEEEEE;
+          }
+        }
+      }
+
+      .star {
+        cursor: pointer;
+        background-color: #CD853F;
+        border: solid 1px;
+        width: 30px;
+        height: 30px;
+        font-size: 20px;
+        line-height: 30px;
+        text-align: center;
+        vertical-align: center;
+      }
+
+      .cut-status {
+        font-family: Helvetica, Arial, sans-serif;
+        font-weight: bold;
+        text-align: center;
+        padding: 5px;
+
+        .faded{
+          opacity: 0.1;
+          text-decoration: line-through;
+        }
+      }
+
+      &.selected {
+        background-color: #AFAFAF;
+        border-radius: 5px;
+      }
+    }
+  }
+
+  .buttons {
+    width: 100%;
+    margin: 5px;
+    display: flex;
+    justify-content: space-between;
+
+    .button {
+      cursor: pointer;
+      border: solid 3px;
+      padding: 5px;
+      margin: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+
+      &.selected {
+        background-color: #AAAAAA;
+      }
+      &.red {
+        background-color: #ED8787;
+      }
+      &.blue {
+        background-color: #7BA9F2;
+      }
+      &.white {
+        background-color: #EDEDED;
+      }
+    }
+
+    &.colors .button {
+      width: 20%;
+    }
+
+    &.settings .button {
+      width: 30%;
+    }
+  }
+}
