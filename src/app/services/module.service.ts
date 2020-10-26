@@ -7,7 +7,7 @@ export enum Modules {
 
 @Injectable({providedIn: 'root'})
 export class ModuleService {
-  loadedModules: = [...Object.values(Modules)];
+  loadedModules: string[] = [...Object.values(Modules)];
 
   constructor() {}
 
