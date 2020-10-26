@@ -19,8 +19,6 @@ jobs:
           cordova-version: 8
       - name: Install app dependencies
         run: npm ci
-      - name: Install functions dependencies
-        run: cd functions && npm i && cd ..
       - name: Build prod app
         run: npm run build
       - uses: w9jds/firebase-action@master
