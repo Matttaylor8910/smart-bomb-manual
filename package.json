@@ -6,10 +6,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build": "ionic build --prod --release",
+    "deploy": "npm run build && firebase deploy"
   },
   "private": true,
   "dependencies": {
