@@ -16,5 +16,9 @@
       [module]="module"
       (close)="moduleService.removeModule(i)">
     </app-module-window>
+
+    <div class="empty-state" *ngIf="moduleService.loadedModules.length === 0">
+      Select a new module to work on from the toolbar above 👆
+    </div>
   </div>
 </ion-content>

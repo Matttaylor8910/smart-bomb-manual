@@ -1,5 +1,13 @@
+ion-toolbar ion-buttons {
+  overflow-x: scroll !important;
+}
+
 .modules {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.empty-state {
+  margin: 60px 20px;
 }
