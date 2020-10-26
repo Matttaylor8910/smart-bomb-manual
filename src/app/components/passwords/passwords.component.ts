@@ -15,6 +15,8 @@ const WORDS = [
   styleUrls: ['./passwords.component.scss'],
 })
 export class PasswordsComponent {
+  WORDS_PER_COLUMN = 6;
+
   words = [...WORDS];
   options = [];
 
@@ -35,7 +37,7 @@ export class PasswordsComponent {
 
   filterByColumn(optionRow: string, index: number) {
     // empty filter means all
-    if (!optionRow) return WORDS;
+    if (!optionRow || optionRow.length !== this.WORDS_PER_COLUMN) return WORDS;
 
     var optionChars = optionRow.toLowerCase().split('');
     return WORDS.filter(function(password) {
