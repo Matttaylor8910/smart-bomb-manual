@@ -3,14 +3,34 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {IonicModule} from '@ionic/angular';
 import {ComplicatedWiresComponent} from './complicated-wires/complicated-wires.component';
+import {KeypadsComponent} from './keypads/keypads.component';
+import {KnobsComponent} from './knobs/knobs.component';
+import {MazesComponent} from './mazes/mazes.component';
+import {MemoryComponent} from './memory/memory.component';
 import {ModuleWindowComponent} from './module-window/module-window.component';
+import {MorseCodeComponent} from './morse-code/morse-code.component';
 import {PasswordsComponent} from './passwords/passwords.component';
+import {SimonSaysComponent} from './simon-says/simon-says.component';
+import {TheButtonComponent} from './the-button/the-button.component';
+import {WhosOnFirstComponent} from './whos-on-first/whos-on-first.component';
+import {WireSequencesComponent} from './wire-sequences/wire-sequences.component';
+import {WiresComponent} from './wires/wires.component';
 
 @NgModule({
   declarations: [
     ModuleWindowComponent,
     ComplicatedWiresComponent,
+    KeypadsComponent,
+    KnobsComponent,
+    MazesComponent,
+    MemoryComponent,
+    MorseCodeComponent,
     PasswordsComponent,
+    SimonSaysComponent,
+    TheButtonComponent,
+    WhosOnFirstComponent,
+    WireSequencesComponent,
+    WiresComponent,
   ],
   imports: [
     IonicModule,
@@ -20,7 +40,17 @@ import {PasswordsComponent} from './passwords/passwords.component';
   exports: [
     ModuleWindowComponent,
     ComplicatedWiresComponent,
+    KeypadsComponent,
+    KnobsComponent,
+    MazesComponent,
+    MemoryComponent,
+    MorseCodeComponent,
     PasswordsComponent,
+    SimonSaysComponent,
+    TheButtonComponent,
+    WhosOnFirstComponent,
+    WireSequencesComponent,
+    WiresComponent,
   ]
 })
 export class ComponentsModule {
