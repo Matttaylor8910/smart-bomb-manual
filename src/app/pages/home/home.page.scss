@@ -1,6 +1,7 @@
 .modules {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 
   .module {
     margin: 20px;
