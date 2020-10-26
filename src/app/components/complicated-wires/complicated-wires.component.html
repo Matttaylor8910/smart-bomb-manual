@@ -20,8 +20,8 @@
     <div class="button" (click)="selectNextColumn()">NEXT</div>
   </div>
   <div class="buttons settings">
-    <div class="button" [class.selected]="parallel" (click)="parallel = !parallel">PARALLEL PORT</div>
-    <div class="button" [class.selected]="batteries" (click)="batteries = !batteries">2 OR MORE BATTERIES</div>
-    <div class="button" [class.selected]="serial" (click)="serial = !serial">EVEN SERIAL</div>
+    <div class="button" [class.selected]="bombStateService.parallel" (click)="bombStateService.parallel = !bombStateService.parallel">PARALLEL PORT</div>
+    <div class="button" [class.selected]="bombStateService.batteries" (click)="bombStateService.batteries = !bombStateService.batteries">2 OR MORE BATTERIES</div>
+    <div class="button" [class.selected]="bombStateService.serial" (click)="bombStateService.serial = !bombStateService.serial">EVEN SERIAL</div>
   </div>
 </div>

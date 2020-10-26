@@ -1,0 +1,8 @@
+<div class="module">
+  <div class="status-bar">
+    <ion-icon name="close" (click)="close.emit()"></ion-icon>
+  </div>
+
+  <app-complicated-wires *ngIf="module === Modules.COMPLICATED_WIRES"></app-complicated-wires>
+  <app-passwords *ngIf="module === Modules.PASSWORDS"></app-passwords>
+</div>

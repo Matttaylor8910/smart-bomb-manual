@@ -1,0 +1,14 @@
+.module {
+  margin: 20px;
+  border: 1px solid #ccc;
+
+  .status-bar {
+    background: #ccc;
+    padding: 5px;
+    cursor: move;
+
+    ion-icon {
+      cursor: pointer;
+    }
+  }
+}

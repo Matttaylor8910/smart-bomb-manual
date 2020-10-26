@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {xor} from 'lodash';
+import {BombStateService} from 'src/app/services/bomb-state.service';
 
 interface WiresColumn {
   led: boolean;
@@ -13,16 +14,12 @@ interface WiresColumn {
   styleUrls: ['./complicated-wires.component.scss'],
 })
 export class ComplicatedWiresComponent {
-  // TODO: come from a settings service:
-  // Move the buttons corresponding to these values to a new settings component
-  parallel = false;
-  serial = false;
-  batteries = false;
-
   selectedColumn: number;
   columns: WiresColumn[] = [];
 
-  constructor() {
+  constructor(
+      public bombStateService: BombStateService,
+  ) {
     this.resetWires();
   }
 
@@ -55,27 +52,27 @@ export class ComplicatedWiresComponent {
           if (column.led) {
             return false;
           } else {
-            return this.parallel;
+            return this.bombStateService.parallel;
           }
         } else {
           if (column.led) {
-            return this.serial;
+            return this.bombStateService.serial;
           } else {
-            return this.serial;
+            return this.bombStateService.serial;
           }
         }
       } else {
         if (column.star) {
           if (column.led) {
-            return this.batteries;
+            return this.bombStateService.batteries;
           } else {
             return true;
           }
         } else {
           if (column.led) {
-            return this.batteries;
+            return this.bombStateService.batteries;
           } else {
-            return this.serial;
+            return this.bombStateService.serial;
           }
         }
       }
@@ -83,21 +80,21 @@ export class ComplicatedWiresComponent {
       if (column.wires.includes('blue')) {
         if (column.star) {
           if (column.led) {
-            return this.parallel;
+            return this.bombStateService.parallel;
           } else {
             return false;
           }
         } else {
           if (column.led) {
-            return this.parallel;
+            return this.bombStateService.parallel;
           } else {
-            return this.serial;
+            return this.bombStateService.serial;
           }
         }
       } else {
         if (column.star) {
           if (column.led) {
-            return this.batteries;
+            return this.bombStateService.batteries;
           } else {
             return true;
           }

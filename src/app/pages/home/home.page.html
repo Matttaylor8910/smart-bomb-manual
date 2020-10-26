@@ -1,16 +1,20 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Smart Bomb Manual</ion-title>
+    <ion-buttons slot="end">
+      <ion-button *ngFor="let module of moduleNames" (click)="moduleService.addModule(module)">
+        {{ module }}
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="modules">
-    <div class="module">
-      <app-complicated-wires></app-complicated-wires>
-    </div>
-    <div class="module">
-      <app-complicated-wires></app-complicated-wires>
-    </div>
+    <app-module-window
+      *ngFor="let module of moduleService.loadedModules; index as i"
+      [module]="module"
+      (close)="moduleService.removeModule(i)">
+    </app-module-window>
   </div>
 </ion-content>
