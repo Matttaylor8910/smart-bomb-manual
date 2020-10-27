@@ -3,16 +3,16 @@ import {Injectable} from '@angular/core';
 export enum Modules {
   COMPLICATED_WIRES = 'Complictated Wires',
   KEYPADS = 'Keypads',
-  // KNOBS = 'Knobs',
+  KNOBS = 'Knobs',
   MAZES = 'Mazes',
   MEMORY = 'Memory',
   MORSE_CODE = 'Morse Code',
   PASSWORDS = 'Passwords',
-  // SIMON_SAYS = 'Simon Says',
-  // THE_BUTTON = 'The Button',
+  SIMON_SAYS = 'Simon Says',
+  THE_BUTTON = 'The Button',
   WHOS_ON_FIRST = 'Who\'s on First',
   WIRE_SEQUENCES = 'Wire Sequences',
-  // WIRES = 'Wires',
+  WIRES = 'Wires',
 }
 
 @Injectable({providedIn: 'root'})
