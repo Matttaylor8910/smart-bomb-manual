@@ -22,6 +22,10 @@
 
     ion-icon {
       cursor: pointer;
+
+      &:not(:last-of-type) {
+        margin-right: 10px;
+      }
     }
   }
 

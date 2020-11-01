@@ -1,7 +1,10 @@
 <div class="module-container">
   <div class="status-bar">
     <div class="title">{{ module }}</div>
-    <ion-icon name="close" (click)="close.emit()"></ion-icon>
+    <div>
+      <ion-icon name="reload" (click)="reloaded.emit()"></ion-icon>
+      <ion-icon name="close" (click)="closed.emit()"></ion-icon>
+    </div>
   </div>
 
   <div class="module">

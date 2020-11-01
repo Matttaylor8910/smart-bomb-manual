@@ -18,7 +18,8 @@
       <app-module-window
         *ngFor="let module of moduleService.loadedModules; index as i"
         [module]="module"
-        (close)="moduleService.removeModule(i)">
+        (reloaded)="moduleService.reloadModule(i)"
+        (closed)="moduleService.removeModule(i)">
       </app-module-window>
 
       <div class="empty-state" *ngIf="moduleService.loadedModules.length === 0">

@@ -8,13 +8,10 @@ import {Modules} from 'src/app/services/module.service';
 })
 export class ModuleWindowComponent {
   @Input() module: string;
-  @Output() close = new EventEmitter<void>();
+  @Output() reloaded = new EventEmitter<void>();
+  @Output() closed = new EventEmitter<void>();
 
   Modules = Modules;
 
   constructor() {}
-
-  removeModule() {
-    // TODO: emit
-  }
 }
