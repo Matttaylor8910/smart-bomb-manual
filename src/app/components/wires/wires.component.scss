@@ -1,0 +1,59 @@
+.module-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 5px;
+
+  .buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    ion-button {
+      width: 16%;
+
+      &.white {
+        --ion-color-light: #fff;
+      }
+      &.black {
+        --ion-color-dark: #000;
+      }
+    }
+  }
+
+  .wires {
+    width: 100%;
+    padding: 10px;
+
+    .wire {
+      position: relative;
+      height: 28px;
+      width: 260px;
+      margin: 28px auto;
+      border: 1px solid var(--ion-color-dark);
+
+      &.RED { background-color: var(--ion-color-danger); }
+      &.BLUE { background-color: var(--ion-color-primary); }
+      &.WHITE { background-color: #fff; }
+      &.BLACK { background-color: #000; }
+      &.YELLOW { background-color: var(--ion-color-warning); }
+
+      ion-icon {
+        position: absolute;
+        right: -38px;
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        transform: rotate(180deg);
+        font-size: 26px;
+      }
+    }
+  }
+
+  .advice {
+    padding: 10px;
+    text-align: center;
+  }
+}
