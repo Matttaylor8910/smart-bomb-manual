@@ -22,7 +22,7 @@ export class ModuleService {
   constructor() {}
 
   addModule(module: string) {
-    this.loadedModules.push(module);
+    this.loadedModules.splice(0, 0, module);
     this.saveModules();
   }
 
