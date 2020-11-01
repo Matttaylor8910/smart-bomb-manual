@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 
 export enum Modules {
-  COMPLICATED_WIRES = 'Complictated Wires',
+  COMPLICATED_WIRES = 'Complicated Wires',
   KEYPADS = 'Keypads',
   KNOBS = 'Knobs',
   MAZES = 'Mazes',
