@@ -1,6 +1,8 @@
 .module-container {
   display: flex;
   flex-direction: column;
+  width: 400px;
+  max-width: 100%;
 
   .module {
     width: 100%;
@@ -89,10 +91,6 @@
 
     &.colors ion-button {
       width: 20%;
-    }
-
-    &.settings ion-button {
-      width: 30%;
     }
   }
 }

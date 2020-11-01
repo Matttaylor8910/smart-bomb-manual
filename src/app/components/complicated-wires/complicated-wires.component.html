@@ -8,9 +8,6 @@
       <ion-button class="star" (click)="column.star = !column.star">
         <ion-icon *ngIf="column.star" slot="icon-only" name="star"></ion-icon>
       </ion-button>
-      <!-- <div class="star" (click)="column.star = !column.star">
-        <div *ngIf="column.star">★</div>
-      </div> -->
       <div class="cut-status">
         <span [class.faded]="!shouldCut(column)">CUT</span>
       </div>
@@ -21,10 +18,5 @@
     <ion-button color="primary" (click)="toggleColor('blue')">Blue</ion-button>
     <ion-button color="medium" (click)="toggleColor('white')">White</ion-button>
     <ion-button fill="clear" (click)="selectNextColumn()">Next</ion-button>
-  </div>
-  <div class="buttons settings">
-    <ion-button color="dark" [fill]="bombStateService.parallel ? 'solid' : 'outline'" (click)="bombStateService.parallel = !bombStateService.parallel">Parallel Port</ion-button>
-    <ion-button color="dark" [fill]="bombStateService.batteries ? 'solid' : 'outline'" (click)="bombStateService.batteries = !bombStateService.batteries">2+ Batteries</ion-button>
-    <ion-button color="dark" [fill]="bombStateService.serial ? 'solid' : 'outline'" (click)="bombStateService.serial = !bombStateService.serial">Even Serial</ion-button>
   </div>
 </div>

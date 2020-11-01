@@ -10,15 +10,20 @@
 </ion-header>
 
 <ion-content>
-  <div class="modules">
-    <app-module-window
-      *ngFor="let module of moduleService.loadedModules; index as i"
-      [module]="module"
-      (close)="moduleService.removeModule(i)">
-    </app-module-window>
+  <div class="layout-container">
+    <div class="sidebar">
+      <app-bomb-state></app-bomb-state>
+    </div>
+    <div class="modules">
+      <app-module-window
+        *ngFor="let module of moduleService.loadedModules; index as i"
+        [module]="module"
+        (close)="moduleService.removeModule(i)">
+      </app-module-window>
 
-    <div class="empty-state" *ngIf="moduleService.loadedModules.length === 0">
-      Select a new module to work on from the toolbar above 👆
+      <div class="empty-state" *ngIf="moduleService.loadedModules.length === 0">
+        Select a new module to work on from the toolbar above 👆
+      </div>
     </div>
   </div>
 </ion-content>

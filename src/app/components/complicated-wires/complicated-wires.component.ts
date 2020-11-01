@@ -56,23 +56,23 @@ export class ComplicatedWiresComponent {
           }
         } else {
           if (column.led) {
-            return this.bombStateService.serial;
+            return this.bombStateService.serialEven;
           } else {
-            return this.bombStateService.serial;
+            return this.bombStateService.serialEven;
           }
         }
       } else {
         if (column.star) {
           if (column.led) {
-            return this.bombStateService.batteries;
+            return this.bombStateService.batteries >= 2;
           } else {
             return true;
           }
         } else {
           if (column.led) {
-            return this.bombStateService.batteries;
+            return this.bombStateService.batteries >= 2;
           } else {
-            return this.bombStateService.serial;
+            return this.bombStateService.serialEven;
           }
         }
       }
@@ -88,13 +88,13 @@ export class ComplicatedWiresComponent {
           if (column.led) {
             return this.bombStateService.parallel;
           } else {
-            return this.bombStateService.serial;
+            return this.bombStateService.serialEven;
           }
         }
       } else {
         if (column.star) {
           if (column.led) {
-            return this.bombStateService.batteries;
+            return this.bombStateService.batteries >= 2;
           } else {
             return true;
           }

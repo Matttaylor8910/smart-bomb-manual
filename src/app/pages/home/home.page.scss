@@ -2,12 +2,26 @@ ion-toolbar ion-buttons {
   overflow-x: scroll !important;
 }
 
-.modules {
+.layout-container {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
+  height: 100%;
+  overflow: hidden;
 
-.empty-state {
-  margin: 60px 20px;
+  .sidebar {
+    width: 250px;
+    background: var(--ion-color-light);
+  }
+
+  .modules {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow: auto;
+    width: 100%;
+
+    .empty-state {
+      margin: 60px 20px;
+      text-align: center;
+    }
+  }
 }

@@ -2,6 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {IonicModule} from '@ionic/angular';
+import {BombStateComponent} from './bomb-state/bomb-state.component';
 import {ComplicatedWiresComponent} from './complicated-wires/complicated-wires.component';
 import {KeypadsComponent} from './keypads/keypads.component';
 import {KnobsComponent} from './knobs/knobs.component';
@@ -18,6 +19,7 @@ import {WiresComponent} from './wires/wires.component';
 
 @NgModule({
   declarations: [
+    BombStateComponent,
     ModuleWindowComponent,
     ComplicatedWiresComponent,
     KeypadsComponent,
@@ -38,6 +40,7 @@ import {WiresComponent} from './wires/wires.component';
     FormsModule,
   ],
   exports: [
+    BombStateComponent,
     ModuleWindowComponent,
     ComplicatedWiresComponent,
     KeypadsComponent,

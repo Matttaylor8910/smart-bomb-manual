@@ -1,0 +1,16 @@
+<div class="container">
+  <h3>Strikes</h3>
+  <label for="strikes">How many?</label>
+  <input id="strikes" [(ngModel)]="bombStateService.strikes" placeholder="0">
+
+  <h3>Batteries</h3>
+  <label for="batteries">How many?</label>
+  <input id="batteries" [(ngModel)]="bombStateService.batteries" placeholder="0">
+
+  <h3>Ports</h3>
+  <ion-button color="dark" size="block" [fill]="bombStateService.parallel ? 'solid' : 'outline'" (click)="bombStateService.parallel = !bombStateService.parallel">Parallel Port</ion-button>
+
+  <h3>Serial</h3>
+  <ion-button color="dark" size="block" [fill]="bombStateService.serialEven ? 'solid' : 'outline'" (click)="bombStateService.serialEven = !bombStateService.serialEven">Even Serial</ion-button>
+  <ion-button color="dark" size="block" [fill]="bombStateService.serialVowel ? 'solid' : 'outline'" (click)="bombStateService.serialVowel = !bombStateService.serialVowel">Vowel in Serial</ion-button>
+</div>
