@@ -17,7 +17,7 @@
     <div class="modules">
       <app-module-window
         *ngFor="let module of moduleService.loadedModules; index as i"
-        [module]="module"
+        [module]="module.name"
         (reloaded)="moduleService.reloadModule(i)"
         (closed)="moduleService.removeModule(i)">
       </app-module-window>

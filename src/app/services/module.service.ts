@@ -15,6 +15,13 @@ export enum Modules {
   WIRES = 'Wires',
 }
 
+// We track our stored modules locally using objects so that Angular change
+// detection uses pointers instead of values. This prevents weird situations
+// when you have multiple of the same module open.
+interface Module {
+  name: string;
+}
+
 @Injectable({providedIn: 'root'})
 export class ModuleService {
   loadedModules = this.loadModules();
@@ -22,7 +29,7 @@ export class ModuleService {
   constructor(private readonly appRef: ApplicationRef) {}
 
   addModule(module: string, index: number = 0) {
-    this.loadedModules.splice(index, 0, module);
+    this.loadedModules.splice(index, 0, {name: module});
     this.saveModules();
   }
 
@@ -33,7 +40,7 @@ export class ModuleService {
     const module = this.loadedModules[index];
     this.removeModule(index);
     this.appRef.tick();
-    this.addModule(module, index);
+    this.addModule(module.name, index);
   }
 
   removeModule(index: number) {
@@ -42,10 +49,13 @@ export class ModuleService {
   }
 
   private saveModules() {
-    localStorage.setItem('loadedModules', JSON.stringify(this.loadedModules));
+    const modules = this.loadedModules.map(module => module.name);
+    localStorage.setItem('loadedModules', JSON.stringify(modules));
   }
 
-  private loadModules(): string[] {
-    return JSON.parse(localStorage.getItem('loadedModules')) || [];
+  private loadModules(): Module[] {
+    const modules: string[] =
+        JSON.parse(localStorage.getItem('loadedModules')) || [];
+    return modules.map(moduleName => ({name: moduleName}));
   }
 }
