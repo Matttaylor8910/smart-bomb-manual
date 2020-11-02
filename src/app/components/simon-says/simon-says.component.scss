@@ -1,0 +1,45 @@
+
+.module-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 5px;
+
+  .buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    ion-button {
+      width: 18%;
+    }
+  }
+
+  .sequence-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    justify-content: center;
+    align-items: center;
+
+    .sequence {
+      display: flex;
+      min-height: 115px;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      .light {
+        width: 60px;
+        height: 40px;
+        margin: 8px;
+        border-radius: 4px;
+
+        &.RED { background-color: var(--ion-color-danger); }
+        &.BLUE { background-color: var(--ion-color-primary); }
+        &.YELLOW { background-color: var(--ion-color-warning); }
+        &.GREEN { background-color: var(--ion-color-success); }
+      }
+    }
+  }
+}

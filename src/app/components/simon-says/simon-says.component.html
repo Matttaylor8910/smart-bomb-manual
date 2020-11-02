@@ -1,3 +1,27 @@
-<p>
-  simon-says works!
-</p>
+<div class="module-container">
+  <div class="buttons">
+    <ion-button color="danger" (click)="pressButton(Button.RED)"></ion-button>
+    <ion-button color="primary" (click)="pressButton(Button.BLUE)"></ion-button>
+    <ion-button color="warning" (click)="pressButton(Button.YELLOW)"></ion-button>
+    <ion-button color="success" (click)="pressButton(Button.GREEN)"></ion-button>
+    <ion-button color="medium" (click)="removeLastButton()" [disabled]="input.length === 0">
+      <ion-icon name="close"></ion-icon>
+    </ion-button>
+  </div>
+
+  <div class="sequence-container">
+    <h3>Input:</h3>
+    <div class="sequence">
+      <div class="light {{ button }}" *ngFor="let button of input"></div>
+      <ion-text color="medium" *ngIf="input.length === 0">Nothing entered yet</ion-text>
+    </div>
+  </div>
+
+  <div class="sequence-container">
+    <h3>Output:</h3>
+    <div class="sequence">
+      <div class="light {{ button }}" *ngFor="let button of output"></div>
+      <ion-text color="medium" *ngIf="output.length === 0">Nothing entered yet</ion-text>
+    </div>
+  </div>
+</div>
