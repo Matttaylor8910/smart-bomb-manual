@@ -2,11 +2,13 @@ import {Injectable} from '@angular/core';
 
 @Injectable({providedIn: 'root'})
 export class BombStateService {
+  carIndicator = false;
   batteries?: number;
-  strikes?: number;
+  frkIndicator = false;
   parallel = false;
-  serialVowel = false;
   serialEven = false;
+  serialVowel = false;
+  strikes?: number;
 
   constructor() {}
 }
