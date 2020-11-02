@@ -6,6 +6,7 @@ import {BombStateComponent} from './bomb-state/bomb-state.component';
 import {ComplicatedWiresComponent} from './complicated-wires/complicated-wires.component';
 import {KeypadsComponent} from './keypads/keypads.component';
 import {KnobsComponent} from './knobs/knobs.component';
+import {LedComponent} from './led/led.component';
 import {MazesComponent} from './mazes/mazes.component';
 import {MemoryComponent} from './memory/memory.component';
 import {ModuleWindowComponent} from './module-window/module-window.component';
@@ -24,6 +25,7 @@ import {WiresComponent} from './wires/wires.component';
     ComplicatedWiresComponent,
     KeypadsComponent,
     KnobsComponent,
+    LedComponent,
     MazesComponent,
     MemoryComponent,
     MorseCodeComponent,
@@ -45,6 +47,7 @@ import {WiresComponent} from './wires/wires.component';
     ComplicatedWiresComponent,
     KeypadsComponent,
     KnobsComponent,
+    LedComponent,
     MazesComponent,
     MemoryComponent,
     MorseCodeComponent,

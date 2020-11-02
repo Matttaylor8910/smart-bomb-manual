@@ -1,7 +1,7 @@
 <div class="module-container">
   <div class="module">
     <div class="column" *ngFor="let column of columns; index as i" [class.selected]="selectedColumn === i">
-      <ion-button class="led" [class.lit]="column.led" (click)="column.led = !column.led"></ion-button>
+      <app-led [(lit)]="column.led"></app-led>
       <div class="wires" (click)="selectColumn(i)">
         <div class="wire {{wire}}" *ngFor="let wire of column.wires"></div>
       </div>
