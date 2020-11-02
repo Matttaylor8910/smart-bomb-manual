@@ -6,7 +6,7 @@
     <ion-button class="black" color="dark" (click)="addWire(Wire.BLACK)" [disabled]="wires.length >= 6"></ion-button>
     <ion-button color="warning" (click)="addWire(Wire.YELLOW)" [disabled]="wires.length >= 6"></ion-button>
     <ion-button color="medium" (click)="removeLastWire()" [disabled]="wires.length === 0">
-      <ion-icon name="close"></ion-icon>
+      <ion-icon name="backspace-outline"></ion-icon>
     </ion-button>
   </div>
 
