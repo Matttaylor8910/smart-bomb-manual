@@ -1,3 +1,37 @@
-<p>
-  the-button works!
-</p>
+<div class="module-container">
+  <section>
+    <div class="buttons">
+      <ion-button color="danger" (click)="setColor(Color.RED)"></ion-button>
+      <ion-button color="light" (click)="setColor(Color.WHITE)"></ion-button>
+      <ion-button color="primary" (click)="setColor(Color.BLUE)"></ion-button>
+      <ion-button color="warning" (click)="setColor(Color.YELLOW)"></ion-button>
+    </div>
+    <div class="buttons">
+      <ion-button fill="outline" color="dark" (click)="setText(text)" *ngFor="let text of options">{{text}}</ion-button>
+    </div>
+  </section>
+
+  <div class="the-button {{color}}">
+    {{text}}
+  </div>
+
+  <div class="advice" [class.shown]="color && text">
+    <span *ngIf="!shouldHold"><b>Press and immediately release</b></span>
+    <span *ngIf="shouldHold"><b>HOLD</b> the button then:</span>
+  </div>
+
+  <div class="strips-advice" [class.shown]="shouldHold">
+    <div class="strip blue">
+      <span>BLUE:</span>
+      <span>5</span>
+    </div>
+    <div class="strip yellow">
+      <span>YELLOW:</span>
+      <span>4</span>
+    </div>
+    <div class="strip">
+      <span>Anything else:</span>
+      <span>1</span>
+    </div>
+  </div>
+</div>
