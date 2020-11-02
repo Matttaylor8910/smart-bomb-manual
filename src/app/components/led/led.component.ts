@@ -14,6 +14,8 @@ export class LedComponent {
     this.litChange.emit(value);
   }
 
+  @Input() label?: string;
+
   @Input() lit = false;
   @Output() litChange = new EventEmitter<boolean>();
 

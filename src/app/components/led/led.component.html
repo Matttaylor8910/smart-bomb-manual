@@ -1,1 +1,4 @@
-<ion-button class="led" [class.lit]="state" (click)="state = !state"></ion-button>
+<div class="led-container">
+  <ion-button class="led" [class.lit]="state" (click)="state = !state"></ion-button>
+  <label *ngIf="label" (click)="state = !state">{{label}}</label>
+</div>

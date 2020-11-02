@@ -1,10 +1,21 @@
-.led {
-  width: 30px;
-  height: 30px;
-  --background: #616161;
-  --border-radius: 50%;
+.led-container {
+  display: flex;
+  align-items: center;
 
-  &.lit {
-    --background: #ffeb3b;
+  .led {
+    width: 30px;
+    height: 30px;
+    --background: #616161;
+    --border-radius: 50%;
+
+    &.lit {
+      --background: #ffeb3b;
+    }
+  }
+
+  label {
+    margin-left: 10px;
+    font-size: 20px;
+    cursor: pointer;
   }
 }
