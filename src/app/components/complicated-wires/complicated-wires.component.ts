@@ -14,14 +14,19 @@ interface WiresColumn {
   styleUrls: ['./complicated-wires.component.scss'],
 })
 export class ComplicatedWiresComponent {
-  selectedColumn: number;
-  columns: WiresColumn[] = [];
+  selectedColumn = 0;
+  columns: WiresColumn[] = [
+    {led: false, wires: [], star: false},
+    {led: false, wires: [], star: false},
+    {led: false, wires: [], star: false},
+    {led: false, wires: [], star: false},
+    {led: false, wires: [], star: false},
+    {led: false, wires: [], star: false},
+  ];
 
   constructor(
       public bombStateService: BombStateService,
-  ) {
-    this.resetWires();
-  }
+  ) {}
 
   selectColumn(index: number) {
     this.selectedColumn = index;
@@ -107,18 +112,5 @@ export class ComplicatedWiresComponent {
         }
       }
     }
-  }
-
-  resetWires() {
-    this.columns = [
-      {led: false, wires: [], star: false},
-      {led: false, wires: [], star: false},
-      {led: false, wires: [], star: false},
-      {led: false, wires: [], star: false},
-      {led: false, wires: [], star: false},
-      {led: false, wires: [], star: false},
-    ];
-
-    this.selectedColumn = 0;
   }
 }
