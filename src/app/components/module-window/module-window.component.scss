@@ -4,7 +4,7 @@
   border: 1px solid #ccc;
   width: 400px;
   max-width: 100%;
-  overflow: auto;
+  overflow: hidden;
 
   .status-bar {
     width: 100%;
@@ -32,6 +32,7 @@
   .module {
     height: 500px;
     width: 100%;
+    overflow: auto;
 
     .empty-state {
       padding: 30px 10px;
