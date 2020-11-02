@@ -1,0 +1,17 @@
+.knobs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 100%;
+  padding: 10px 5px;
+
+  span {
+    text-align: center;
+  }
+
+  .row, app-led {
+    margin: 20px;
+  }
+}

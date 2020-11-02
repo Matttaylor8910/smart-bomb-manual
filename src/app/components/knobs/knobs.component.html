@@ -1,3 +1,9 @@
-<p>
-  knobs works!
-</p>
+<div class="knobs">
+  <span>Input only the left six LEDs.</span>
+  <div>
+    <div class="row" *ngFor="let _ of [].constructor(2); let row = index">
+      <app-led *ngFor="let _ of [].constructor(3); let col = index" [(lit)]="knobs[row * 3 + col]"></app-led>
+    </div>
+  </div>
+  <span>{{ answer }}</span>
+</div>
