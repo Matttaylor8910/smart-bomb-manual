@@ -16,6 +16,7 @@ ion-toolbar ion-buttons {
   .sidebar {
     width: 250px;
     background: var(--ion-color-light);
+    overflow: auto;
   }
 
   .modules {
@@ -25,9 +26,25 @@ ion-toolbar ion-buttons {
     overflow: auto;
     width: 100%;
 
+    app-module-window {
+      max-width: 100%;
+      margin: 20px;
+    }
+
     .empty-state {
       margin: 60px 20px;
       text-align: center;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .layout-container {
+    .sidebar {
+      display: none;
+    }
+    app-module-window {
+      margin: 10px 0;
     }
   }
 }
