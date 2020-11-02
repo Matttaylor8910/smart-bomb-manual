@@ -17,8 +17,6 @@ enum Wire {
 export class WiresComponent {
   Wire = Wire;
   wires: string[] = [];
-  cutIndex?: number;
-  advice?: string;
 
   constructor(
       private readonly bombStateService: BombStateService,
@@ -26,32 +24,22 @@ export class WiresComponent {
 
   addWire(wire: Wire) {
     this.wires.push(wire);
-    this.setAdvice();
   }
 
   removeLastWire() {
     if (this.wires.length) {
       this.wires.splice(this.wires.length - 1, 1);
-      this.setAdvice();
     }
-  }
-
-  setAdvice() {
-    if (this.wires.length < 3) {
-      delete this.cutIndex;
-      delete this.advice;
-      return;
-    }
-
-    this.cutIndex = this.getIndexToCut();
-    const wireToCut = this.getWireToCut(this.cutIndex);
-    this.advice = `Cut the ${wireToCut} wire`;
   }
 
   /**
    * Get wire index to cut, remember arrays are 0 indexed
    */
-  getIndexToCut(): number {
+  get cutIndex(): number|null {
+    if (this.wires.length < 3) {
+      return null;
+    }
+
     const lastIndex = this.wires.length - 1;
     const lastWire = this.wires[lastIndex];
     const wireMap = {};
@@ -159,14 +147,21 @@ export class WiresComponent {
     }
   }
 
+  get advice(): string {
+    if (this.cutIndex === null) {
+      return '';
+    }
+    return `Cut the ${this.getWireDescriptor()} wire`;
+  }
+
   /**
    * Return a nice string representation of which wire to cut
    */
-  getWireToCut(index): string {
-    if (index === this.wires.length - 1) {
+  getWireDescriptor(): string {
+    if (this.cutIndex === this.wires.length - 1) {
       return 'last';
     }
-    switch (index) {
+    switch (this.cutIndex) {
       case 0:
         return 'first';
       case 1:
