@@ -16,22 +16,23 @@ enum Button {
 export class SimonSaysComponent {
   Button = Button;
   input: Button[] = [];
-  output: Button[] = [];
 
   constructor(
       private readonly bombStateService: BombStateService,
   ) {}
 
+  get output(): Button[] {
+    return this.input.map(this.getOutput.bind(this));
+  }
+
   pressButton(button: Button) {
     this.input.push(button);
-    this.output.push(this.getOutput(button));
   }
 
   removeLastButton() {
     if (this.input.length) {
       const index = this.input.length - 1;
       this.input.splice(index, 1);
-      this.output.splice(index, 1);
     }
   }
 
@@ -66,8 +67,8 @@ export class SimonSaysComponent {
       }
     }
 
-    // 2 STRIKES
-    else if (strikes === 2) {
+    // 2+ STRIKES
+    else {
       switch (button) {
         case Button.RED:
           return serialVowel ? Button.GREEN : Button.YELLOW;
