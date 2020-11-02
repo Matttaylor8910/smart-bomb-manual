@@ -11,7 +11,11 @@
     text-align: center;
   }
 
-  .row, app-led {
-    margin: 20px;
+  .row {
+    display: flex;
+
+    app-led {
+      margin: 20px;
+    }
   }
 }
