@@ -49,13 +49,10 @@ export class ModuleService {
   }
 
   private saveModules() {
-    const modules = this.loadedModules.map(module => module.name);
-    localStorage.setItem('loadedModules', JSON.stringify(modules));
+    localStorage.setItem('loadedModules', JSON.stringify(this.loadedModules));
   }
 
   private loadModules(): Module[] {
-    const modules: string[] =
-        JSON.parse(localStorage.getItem('loadedModules')) || [];
-    return modules.map(moduleName => ({name: moduleName}));
+    return JSON.parse(localStorage.getItem('loadedModules')) || [];
   }
 }

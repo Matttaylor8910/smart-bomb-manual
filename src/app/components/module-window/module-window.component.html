@@ -22,7 +22,7 @@
     <app-wires *ngSwitchCase="Modules.WIRES"></app-wires>
 
     <div class="empty-state" *ngSwitchDefault>
-      {{ module }} either hasn't been implemented yet or doesn't exist
+      This module either hasn't been implemented yet or doesn't exist
       <ion-button size="small" color="medium" (click)="closed.emit()">Close Module</ion-button>
     </div>
   </div>
