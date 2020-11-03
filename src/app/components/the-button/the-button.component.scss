@@ -9,7 +9,6 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    --ion-color-light: #fff;
 
     ion-button {
       width: 24%;
@@ -31,10 +30,10 @@
 
     &.RED {
       background-color: var(--ion-color-danger);
-      color: #fff;
+      color: var(--ion-color-light);
     }
     &.WHITE {
-      background-color: #fff;
+      background-color: var(--ion-color-light);
     }
     &.BLUE {
       background-color: var(--ion-color-primary);

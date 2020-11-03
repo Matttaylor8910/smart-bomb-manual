@@ -2,8 +2,8 @@
   <div class="buttons">
     <ion-button color="danger" (click)="addWire(Wire.RED)" [disabled]="wires.length >= 6"></ion-button>
     <ion-button color="primary" (click)="addWire(Wire.BLUE)" [disabled]="wires.length >= 6"></ion-button>
-    <ion-button class="white" color="light" (click)="addWire(Wire.WHITE)" [disabled]="wires.length >= 6"></ion-button>
-    <ion-button class="black" color="dark" (click)="addWire(Wire.BLACK)" [disabled]="wires.length >= 6"></ion-button>
+    <ion-button class="always-light" color="light" (click)="addWire(Wire.WHITE)" [disabled]="wires.length >= 6"></ion-button>
+    <ion-button class="always-dark" color="dark" (click)="addWire(Wire.BLACK)" [disabled]="wires.length >= 6"></ion-button>
     <ion-button color="warning" (click)="addWire(Wire.YELLOW)" [disabled]="wires.length >= 6"></ion-button>
     <ion-button color="medium" (click)="removeLastWire()" [disabled]="wires.length === 0">
       <ion-icon name="backspace-outline"></ion-icon>
