@@ -1,0 +1,52 @@
+.module-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+
+  * {
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .module {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid var(--ion-color-medium);
+    padding: 5px;
+
+    input {
+      margin: 5px;
+      color: var(--ion-color-dark);
+      background-color: var(--ion-color-light);
+      border: 1px solid var(--ion-color-dark);
+
+      &:focus {
+        outline: none;
+        border-color: var(--ion-color-primary);
+      }
+    }
+
+    .display {
+      font-size: 20px;
+    }
+
+    .positions {
+      display: flex;
+      flex-wrap: wrap;
+
+      input {
+        width: calc(50% - 10px);
+
+        &[disabled] {
+          background-color: var(--ion-color-dark);
+          color: transparent;
+          opacity: .2;
+        }
+      }
+    }
+  }
+}

@@ -1,1 +1,35 @@
-<iframe width="500" height="540" src="https://ktane-solver.droppages.com/six_words.html" style="background: white;"></iframe>
+<div class="module-container">
+  <div class="module">
+    <input class="display" placeholder="Text in Display" [(ngModel)]="displayText">
+    <div class="positions">
+      <input
+        *ngFor="let pos of positions"
+        [placeholder]="position === pos ? 'text on label' : ''"
+        [class.highlight]="position === pos"
+        [disabled]="position !== pos"
+        [(ngModel)]="labelText"
+      >
+    </div>
+  </div>
+
+  <h3 *ngIf="!position">
+    What's in the display?
+  </h3>
+
+  <ng-container *ngIf="position && words.length === 0">
+    <h3>
+      <span *ngIf="displayText.length === 0">If the display is correct, </span>
+      <span>what's the word in the highlighted position?</span>
+    </h3>
+    <h2><b>{{position}}</b></h2>
+  </ng-container>
+
+  <ng-container *ngIf="position && words.length > 0">
+    <h3>Showing words for: <b>{{labelText}}</b></h3>
+    <h3>Tell defuser to click:</h3>
+  </ng-container>
+
+  <p class="possible-words">
+    {{ words }}
+  </p>
+</div>
