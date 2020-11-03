@@ -5,13 +5,17 @@
   height: 100%;
   padding: 5px;
 
-  .buttons {
+  section {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
 
-    ion-button {
-      width: 24%;
+    .buttons {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      ion-button {
+        width: 23.5%;
+      }
     }
   }
 
