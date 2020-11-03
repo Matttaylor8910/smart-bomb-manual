@@ -1,1 +1,30 @@
-<iframe width="900" height="540" src="https://ktane-solver.droppages.com/four_symbols.html" style="background: white;"></iframe>
+<div class="module-container">
+  <div class="keypad-icons">
+    <ion-button class="keypad-icon" color="light" *ngFor="let icon of icons" (click)="addIcon(icon)" [disabled]="!isPossible(icon)">
+      <img src="assets/keypads/{{icon}}">
+    </ion-button>
+    <ion-button class="backspace" color="medium" (click)="removeLastIcon()" [disabled]="input.length === 0">
+      <ion-icon name="backspace-outline"></ion-icon>
+    </ion-button>
+  </div>
+
+  <div class="sequence-container">
+    <h3>Input:</h3>
+    <div class="sequence">
+      <ion-button class="keypad-icon" color="light" *ngFor="let icon of input">
+        <img src="assets/keypads/{{icon}}">
+      </ion-button>
+      <ion-text color="medium" *ngIf="input.length === 0">Please enter all four icons shown on the keypad</ion-text>
+    </div>
+  </div>
+
+  <div class="sequence-container">
+    <h3>Output:</h3>
+    <div class="sequence">
+      <ion-button class="keypad-icon" color="light" *ngFor="let icon of output">
+        <img src="assets/keypads/{{icon}}">
+      </ion-button>
+      <ion-text color="medium" *ngIf="output.length === 0">Please enter all four icons shown on the keypad</ion-text>
+    </div>
+  </div>
+</div>
