@@ -5,30 +5,29 @@
       <input
         *ngFor="let pos of positions"
         [placeholder]="position === pos ? pos : ''"
-        [class.highlight]="position === pos"
         [disabled]="position !== pos"
         [(ngModel)]="labelInput"
       >
     </div>
   </div>
 
-  <h3 *ngIf="!position">
+  <h4 *ngIf="!position">
     What's in the display?
-  </h3>
+  </h4>
 
   <ng-container *ngIf="position && output.length === 0">
-    <h3>
+    <h4>
       <span *ngIf="displayInput.length === 0">If the display is correct, </span>
       <span>{{displayInput.length === 0 ? 'w' : 'W'}}hat's the word in the highlighted position?</span>
-    </h3>
+    </h4>
     <h2 class="uppercase"><b>{{position}}</b></h2>
   </ng-container>
 
   <ng-container *ngIf="position && output.length > 0">
-    <h3>
+    <h4>
       Showing {{ possibleWords.length === 1 ? 'the only option' : 'words' }} for:
       <b class="uppercase">{{label}}</b>
-    </h3>
+    </h4>
   </ng-container>
 
   <p class="possible-words uppercase" [class.bold]="possibleWords.length === 1" *ngIf="output">
