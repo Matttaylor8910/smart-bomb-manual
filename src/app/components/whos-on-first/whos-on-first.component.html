@@ -1,13 +1,13 @@
 <div class="module-container">
-  <div class="module">
-    <input class="display" placeholder="Text in Display" [(ngModel)]="displayText" (keyup)="labelText = ''">
+  <div class="module uppercase">
+    <input class="display" placeholder="Text in Display" [(ngModel)]="displayInput" (keyup)="labelInput = ''">
     <div class="positions">
       <input
         *ngFor="let pos of positions"
         [placeholder]="position === pos ? pos : ''"
         [class.highlight]="position === pos"
         [disabled]="position !== pos"
-        [(ngModel)]="labelText"
+        [(ngModel)]="labelInput"
       >
     </div>
   </div>
@@ -18,18 +18,23 @@
 
   <ng-container *ngIf="position && output.length === 0">
     <h3>
-      <span *ngIf="displayText.length === 0">If the display is correct, </span>
-      <span>what's the word in the highlighted position?</span>
+      <span *ngIf="displayInput.length === 0">If the display is correct, </span>
+      <span>{{displayInput.length === 0 ? 'w' : 'W'}}hat's the word in the highlighted position?</span>
     </h3>
-    <h2><b>{{position}}</b></h2>
+    <h2 class="uppercase"><b>{{position}}</b></h2>
   </ng-container>
 
   <ng-container *ngIf="position && output.length > 0">
-    <h3>Showing {{ possibleWords.length === 1 ? 'the only option' : 'words' }} for: <b>{{labelText}}</b></h3>
-    <h3>Tell defuser to click:</h3>
+    <h3>
+      Showing {{ possibleWords.length === 1 ? 'the only option' : 'words' }} for:
+      <b class="uppercase">{{label}}</b>
+    </h3>
   </ng-container>
 
-  <p class="possible-words" [class.bold]="possibleWords.length === 1">
+  <p class="possible-words uppercase" [class.bold]="possibleWords.length === 1" *ngIf="output">
     {{ output }}
   </p>
+
+  <!-- this is just for nice spacing in the flex container: -->
+  <div></div>
 </div>

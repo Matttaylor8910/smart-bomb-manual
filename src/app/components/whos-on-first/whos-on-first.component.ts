@@ -163,38 +163,63 @@ const LABEL = {
 export class WhosOnFirstComponent {
   Position = Position;
 
-  displayText: string = '';
-  labelText: string = '';
+  displayInput: string = '';
+  labelInput: string = '';
 
   constructor() {}
 
+  /**
+   * Return the string values for the positions, i.e. "top right"
+   */
   get positions(): string[] {
     return Object.values(Position);
   }
 
+  /**
+   * Return the position for the text in the display
+   */
   get position(): Position {
-    return DISPLAY[this.lowercase(this.displayText)];
+    return DISPLAY[this.displayInput.toLowerCase()];
   }
 
+  /**
+   * Given the text in the labelInput, output the only possible label
+   */
+  get label(): string {
+    if (!this.position) return '';
+
+    const lower = this.labelInput.toLowerCase();
+    const possible =
+        Object.keys(LABEL).filter(label => label.startsWith(lower));
+
+    // only output the label when there is one possible choice
+    if (possible.length === 1) {
+      return possible[0];
+    }
+
+    return '';
+  }
+
+  /**
+   * Return the output to read back to the defuser for part 2
+   */
   get output(): string {
     return this.possibleWords.join(', ');
   }
 
+  /**
+   * Return an array of possible words given the current label
+   */
   get possibleWords(): string[] {
     if (!this.position) return [];
 
-    const text = this.lowercase(this.labelText);
-    const theWords = LABEL[text] || [];
+    const possible = LABEL[this.label] || [];
 
     // if the first word is the label, just click that label
-    if (theWords.length > 0 && theWords[0] === text) {
-      return theWords.slice(0, 1);
+    if (possible.length > 0 && possible[0] === this.label) {
+      return possible.slice(0, 1);
     } else {
-      return theWords;
+      return possible;
     }
-  }
-
-  private lowercase(text: string) {
-    return text ? text.trim().toLowerCase() : '';
   }
 }
