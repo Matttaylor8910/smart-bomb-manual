@@ -192,12 +192,14 @@ export class WhosOnFirstComponent {
     const possible =
         Object.keys(LABEL).filter(label => label.startsWith(lower));
 
-    // only output the label when there is one possible choice
+    // if there is only one possible choice, return that
     if (possible.length === 1) {
       return possible[0];
     }
 
-    return '';
+    // fallback to the text in the input when there are multiple choices or no
+    // choices given the labelInput
+    return this.labelInput;
   }
 
   /**
