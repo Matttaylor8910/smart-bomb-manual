@@ -16,7 +16,7 @@
     What's in the display?
   </h3>
 
-  <ng-container *ngIf="position && words.length === 0">
+  <ng-container *ngIf="position && output.length === 0">
     <h3>
       <span *ngIf="displayText.length === 0">If the display is correct, </span>
       <span>what's the word in the highlighted position?</span>
@@ -24,12 +24,12 @@
     <h2><b>{{position}}</b></h2>
   </ng-container>
 
-  <ng-container *ngIf="position && words.length > 0">
-    <h3>Showing words for: <b>{{labelText}}</b></h3>
+  <ng-container *ngIf="position && output.length > 0">
+    <h3>Showing {{ possibleWords.length === 1 ? 'the only option' : 'words' }} for: <b>{{labelText}}</b></h3>
     <h3>Tell defuser to click:</h3>
   </ng-container>
 
-  <p class="possible-words">
-    {{ words }}
+  <p class="possible-words" [class.bold]="possibleWords.length === 1">
+    {{ output }}
   </p>
 </div>

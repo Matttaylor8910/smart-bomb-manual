@@ -176,9 +176,22 @@ export class WhosOnFirstComponent {
     return DISPLAY[this.lowercase(this.displayText)];
   }
 
-  get words(): string {
-    const theWords = LABEL[this.lowercase(this.labelText)] || [];
-    return this.position ? theWords.join(', ') : '';
+  get output(): string {
+    return this.possibleWords.join(', ');
+  }
+
+  get possibleWords(): string[] {
+    if (!this.position) return [];
+
+    const text = this.lowercase(this.labelText);
+    const theWords = LABEL[text] || [];
+
+    // if the first word is the label, just click that label
+    if (theWords.length > 0 && theWords[0] === text) {
+      return theWords.slice(0, 1);
+    } else {
+      return theWords;
+    }
   }
 
   private lowercase(text: string) {
