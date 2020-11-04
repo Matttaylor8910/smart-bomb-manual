@@ -1,10 +1,10 @@
 <div class="module-container">
   <div class="module">
-    <input class="display" placeholder="Text in Display" [(ngModel)]="displayText">
+    <input class="display" placeholder="Text in Display" [(ngModel)]="displayText" (keyup)="labelText = ''">
     <div class="positions">
       <input
         *ngFor="let pos of positions"
-        [placeholder]="position === pos ? 'text on label' : ''"
+        [placeholder]="position === pos ? pos : ''"
         [class.highlight]="position === pos"
         [disabled]="position !== pos"
         [(ngModel)]="labelText"
