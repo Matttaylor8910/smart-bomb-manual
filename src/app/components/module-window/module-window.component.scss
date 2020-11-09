@@ -17,14 +17,22 @@
     padding: 5px 10px;
 
     .title {
-      cursor: text;
+      display: flex;
+      align-items: center;
+
+      ion-icon {
+        margin-left: 10px;
+        font-size: 26px;
+      }
     }
 
-    ion-icon {
-      cursor: pointer;
+    .controls {
+      ion-icon {
+        cursor: pointer;
 
-      &:not(:last-of-type) {
-        margin-right: 10px;
+        &:not(:last-of-type) {
+          margin-right: 10px;
+        }
       }
     }
   }

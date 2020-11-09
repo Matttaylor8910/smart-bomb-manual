@@ -1,20 +1,35 @@
 <div class="container">
-  <h3>Batteries</h3>
+  <div class="header">
+    <h3>Batteries</h3>
+    <ion-icon name="battery-full"></ion-icon>
+  </div>
   <label for="batteries">How many?</label>
   <input type="number" id="batteries" [(ngModel)]="bombStateService.batteries" placeholder="0">
 
-  <h3>Indicators</h3>
+  <div class="header">
+    <h3>Indicators</h3>
+    <ion-icon name="sunny-outline"></ion-icon>
+  </div>
   <app-led label="CAR" [(lit)]="bombStateService.carIndicator"></app-led>
   <app-led label="FRK" [(lit)]="bombStateService.frkIndicator"></app-led>
 
-  <h3>Ports</h3>
+  <div class="header">
+    <h3>Ports</h3>
+    <ion-icon name="apps-outline"></ion-icon>
+  </div>
   <ion-button color="dark" size="block" [fill]="bombStateService.parallel ? 'solid' : 'outline'" (click)="bombStateService.parallel = !bombStateService.parallel">Parallel Port</ion-button>
 
-  <h3>Serial</h3>
+  <div class="header">
+    <h3>Serial</h3>
+    <ion-icon name="barcode-outline"></ion-icon>
+  </div>
   <ion-button color="dark" size="block" [fill]="bombStateService.serialEven ? 'solid' : 'outline'" (click)="bombStateService.serialEven = !bombStateService.serialEven">Even Serial</ion-button>
   <ion-button color="dark" size="block" [fill]="bombStateService.serialVowel ? 'solid' : 'outline'" (click)="bombStateService.serialVowel = !bombStateService.serialVowel">Vowel in Serial</ion-button>
 
-  <h3>Strikes</h3>
+  <div class="header">
+    <h3>Strikes</h3>
+    <ion-icon name="skull-outline"></ion-icon>
+  </div>
   <label for="strikes">How many?</label>
   <input type="number" id="strikes" [(ngModel)]="bombStateService.strikes" placeholder="0">
 </div>

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Modules, ModuleService} from 'src/app/services/module.service';
+import {ModuleName, ModuleService} from 'src/app/services/module.service';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +14,6 @@ export class HomePage {
   ) {}
 
   get moduleNames(): string[] {
-    return Object.values(Modules);
+    return Object.values(ModuleName);
   }
 }

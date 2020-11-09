@@ -1,25 +1,28 @@
 <div class="module-container">
   <div class="status-bar">
-    <div class="title">{{ module }}</div>
-    <div>
+    <div class="title">
+      <span>{{ module }}</span>
+      <ion-icon *ngFor="let name of requirementIcons" [name]="name"></ion-icon>
+    </div>
+    <div class="controls">
       <ion-icon name="reload" (click)="reloaded.emit()"></ion-icon>
       <ion-icon name="close" (click)="closed.emit()"></ion-icon>
     </div>
   </div>
 
   <div class="module" [ngSwitch]="module">
-    <app-complicated-wires *ngSwitchCase="Modules.COMPLICATED_WIRES"></app-complicated-wires>
-    <app-keypads *ngSwitchCase="Modules.KEYPADS"></app-keypads>
-    <app-knobs *ngSwitchCase="Modules.KNOBS"></app-knobs>
-    <app-mazes *ngSwitchCase="Modules.MAZES"></app-mazes>
-    <app-memory *ngSwitchCase="Modules.MEMORY"></app-memory>
-    <app-morse-code *ngSwitchCase="Modules.MORSE_CODE"></app-morse-code>
-    <app-passwords *ngSwitchCase="Modules.PASSWORDS"></app-passwords>
-    <app-simon-says *ngSwitchCase="Modules.SIMON_SAYS"></app-simon-says>
-    <app-the-button *ngSwitchCase="Modules.THE_BUTTON"></app-the-button>
-    <app-whos-on-first *ngSwitchCase="Modules.WHOS_ON_FIRST"></app-whos-on-first>
-    <app-wire-sequences *ngSwitchCase="Modules.WIRE_SEQUENCES"></app-wire-sequences>
-    <app-wires *ngSwitchCase="Modules.WIRES"></app-wires>
+    <app-complicated-wires *ngSwitchCase="ModuleName.COMPLICATED_WIRES"></app-complicated-wires>
+    <app-keypads *ngSwitchCase="ModuleName.KEYPADS"></app-keypads>
+    <app-knobs *ngSwitchCase="ModuleName.KNOBS"></app-knobs>
+    <app-mazes *ngSwitchCase="ModuleName.MAZES"></app-mazes>
+    <app-memory *ngSwitchCase="ModuleName.MEMORY"></app-memory>
+    <app-morse-code *ngSwitchCase="ModuleName.MORSE_CODE"></app-morse-code>
+    <app-passwords *ngSwitchCase="ModuleName.PASSWORDS"></app-passwords>
+    <app-simon-says *ngSwitchCase="ModuleName.SIMON_SAYS"></app-simon-says>
+    <app-the-button *ngSwitchCase="ModuleName.THE_BUTTON"></app-the-button>
+    <app-whos-on-first *ngSwitchCase="ModuleName.WHOS_ON_FIRST"></app-whos-on-first>
+    <app-wire-sequences *ngSwitchCase="ModuleName.WIRE_SEQUENCES"></app-wire-sequences>
+    <app-wires *ngSwitchCase="ModuleName.WIRES"></app-wires>
 
     <div class="empty-state" *ngSwitchDefault>
       This module either hasn't been implemented yet or doesn't exist
