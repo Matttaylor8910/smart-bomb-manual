@@ -173,7 +173,7 @@ export class WiresComponent {
       case 4:
         return 'fifth';
       default:
-        return 'whatever you want, the devs fucked up, guess a'
+        return 'whatever you want, the devs fucked up, guess a';
     }
   }
 }
