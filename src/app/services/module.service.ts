@@ -80,7 +80,7 @@ export class ModuleService {
   constructor(private readonly appRef: ApplicationRef) {}
 
   addModule(module: ModuleName, index: number = 0) {
-    this.loadedModules.splice(index, 0, {name: module});
+    this.loadedModules.splice(index, 0, MODULES[module]);
     this.saveModules();
   }
 
