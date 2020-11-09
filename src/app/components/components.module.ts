@@ -11,6 +11,7 @@ import {MazesComponent} from './mazes/mazes.component';
 import {MemoryComponent} from './memory/memory.component';
 import {ModuleWindowComponent} from './module-window/module-window.component';
 import {MorseCodeComponent} from './morse-code/morse-code.component';
+import {NumberClusterComponent} from './number-cluster/number-cluster.component';
 import {PasswordsComponent} from './passwords/passwords.component';
 import {SimonSaysComponent} from './simon-says/simon-says.component';
 import {TheButtonComponent} from './the-button/the-button.component';
@@ -21,20 +22,21 @@ import {WiresComponent} from './wires/wires.component';
 @NgModule({
   declarations: [
     BombStateComponent,
-    ModuleWindowComponent,
     ComplicatedWiresComponent,
     KeypadsComponent,
     KnobsComponent,
     LedComponent,
     MazesComponent,
     MemoryComponent,
+    ModuleWindowComponent,
     MorseCodeComponent,
+    NumberClusterComponent,
     PasswordsComponent,
     SimonSaysComponent,
     TheButtonComponent,
     WhosOnFirstComponent,
-    WireSequencesComponent,
     WiresComponent,
+    WireSequencesComponent,
   ],
   imports: [
     IonicModule,
@@ -43,20 +45,21 @@ import {WiresComponent} from './wires/wires.component';
   ],
   exports: [
     BombStateComponent,
-    ModuleWindowComponent,
     ComplicatedWiresComponent,
     KeypadsComponent,
     KnobsComponent,
     LedComponent,
     MazesComponent,
     MemoryComponent,
+    ModuleWindowComponent,
     MorseCodeComponent,
+    NumberClusterComponent,
     PasswordsComponent,
     SimonSaysComponent,
     TheButtonComponent,
     WhosOnFirstComponent,
-    WireSequencesComponent,
     WiresComponent,
+    WireSequencesComponent,
   ]
 })
 export class ComponentsModule {

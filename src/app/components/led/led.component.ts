@@ -1,4 +1,3 @@
-import {literal} from '@angular/compiler/src/output/output_ast';
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({

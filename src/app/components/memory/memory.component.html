@@ -1,1 +1,25 @@
-<iframe width="500" height="540" src="https://ktane-solver.droppages.com/four_numbers.html" style="background: white;"></iframe>
+<div class="module-container">
+  <div class="module">
+    <div class="titles spaced-out">
+      <b>Display</b>
+      <b>Label</b>
+      <b>Position</b>
+    </div>
+    <div class="stage spaced-out" *ngFor="let stage of stages; index as index">
+      <app-number-cluster [selected]="stage.display" (changed)="setDisplay(index, $event)"></app-number-cluster>
+      <app-number-cluster [selected]="stage.label.value" [disabled]="stage.label.disabled" (changed)="setLabel(stage, $event)"></app-number-cluster>
+      <app-number-cluster [selected]="stage.position.value" [disabled]="stage.position.disabled" (changed)="setPosition(stage, $event)"></app-number-cluster>
+    </div>
+  </div>
+  <div class="advice" [ngSwitch]="currentInfo">
+    <div *ngSwitchCase="Info.DISPLAY">
+      What is in the display?
+    </div>
+    <div *ngSwitchCase="Info.LABEL">
+      Press <b>position {{currentStage.position.value}}</b>, what label?
+    </div>
+    <div *ngSwitchCase="Info.POSITION">
+      Press <b>label {{currentStage.label.value}}</b><span *ngIf="stages.length < 5">, what position?</span>
+    </div>
+  </div>
+</div>

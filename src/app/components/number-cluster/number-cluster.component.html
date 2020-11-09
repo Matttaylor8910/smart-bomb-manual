@@ -1,0 +1,10 @@
+<div class="cluster">
+  <ion-button
+    [disabled]="disabled"
+    [color]="selected === option ? 'success' : 'light'"
+    (click)="changed.emit(option)"
+    *ngFor="let option of options"
+  >
+    {{ option }}
+  </ion-button>
+</div>
