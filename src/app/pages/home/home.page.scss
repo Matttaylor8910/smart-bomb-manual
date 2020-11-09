@@ -1,10 +1,23 @@
-ion-toolbar ion-buttons {
-  overflow-x: scroll !important;
-  -ms-overflow-style: none;  /* Internet Explorer 10+ */
-  scrollbar-width: none;  /* Firefox */
+ion-toolbar {
+  ion-buttons {
+    overflow-x: scroll !important;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
 
-  &::-webkit-scrollbar {
-    display: none;  /* Safari and Chrome */
+    &::-webkit-scrollbar {
+      display: none;  /* Safari and Chrome */
+    }
+  }
+
+  ion-title {
+    line-height: 50px;
+    padding: 0 8px;
+
+    img {
+      position: relative;
+      left: 4px;
+      top: 8px;
+    }
   }
 }
 

@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Smart Bomb Manual</ion-title>
+    <ion-title>
+      <img src="assets/icon/favicon-32x32.png">
+      Smart Bomb Manual
+    </ion-title>
     <ion-buttons slot="end">
       <ion-button *ngFor="let module of moduleNames" (click)="moduleService.addModule(module)">
         {{ module }}
