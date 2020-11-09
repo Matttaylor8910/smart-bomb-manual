@@ -1,4 +1,4 @@
-# Smart Bomb Manual
+# Bomb Ninja
 
 An interactive module solver for Keep Talking and Nobody Explodes.
 
