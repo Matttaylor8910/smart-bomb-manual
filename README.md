@@ -1,4 +1,4 @@
-# Bomb Ninja
+# bomb.ninja
 
 An interactive module solver for Keep Talking and Nobody Explodes.
 
