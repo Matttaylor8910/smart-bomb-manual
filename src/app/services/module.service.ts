@@ -107,6 +107,8 @@ export class ModuleService {
   private loadModules(): Module[] {
     const moduleNames: ModuleName[] =
         JSON.parse(localStorage.getItem('loadedModules')) || [];
-    return moduleNames.map(moduleName => MODULES[moduleName]);
+    // Convert module names to real module objects and filter out anything we
+    // don't understand
+    return moduleNames.map(moduleName => MODULES[moduleName]).filter(m => m);
   }
 }
