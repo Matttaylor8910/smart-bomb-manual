@@ -75,12 +75,12 @@ export const MODULES: {[key in ModuleName]: Module} = {
 
 @Injectable({providedIn: 'root'})
 export class ModuleService {
-  loadedModules = this.loadModules();
+  loadedModules: Module[] = this.loadModules();
 
   constructor(private readonly appRef: ApplicationRef) {}
 
   addModule(module: ModuleName, index: number = 0) {
-    this.loadedModules.splice(index, 0, MODULES[module]);
+    this.loadedModules.splice(index, 0, {...MODULES[module]});
     this.saveModules();
   }
 
