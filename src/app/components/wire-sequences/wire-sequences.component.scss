@@ -1,0 +1,39 @@
+.module-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 5px;
+
+  .buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+
+    ion-button {
+      width: 20%;
+    }
+  }
+
+  .wires {
+    width: 100%;
+    padding: 10px;
+    max-height: 430px;
+    overflow: hidden;
+
+    .wire {
+      position: relative;
+      height: 28px;
+      width: 260px;
+      margin: 28px auto;
+      border: 1px solid var(--ion-color-dark);
+      text-align: center;
+      color: #fff;
+
+      &.RED { background-color: var(--ion-color-danger); }
+      &.BLUE { background-color: var(--ion-color-primary); }
+      &.BLACK { background-color: #000; }
+    }
+  }
+}
