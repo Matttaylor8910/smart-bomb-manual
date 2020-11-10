@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 
 const KNOB_ANSWERS = {
   [[false, false, true, true, true, true].toString()]: 'Up',
-  [[false, true, false, false, true, true].toString()]: 'Up',
+  [[true, false, true, false, true, true].toString()]: 'Up',
   [[false, true, true, true, true, true].toString()]: 'Down',
   [[true, false, true, false, true, false].toString()]: 'Down',
   [[false, false, false, true, false, false].toString()]: 'Left',
