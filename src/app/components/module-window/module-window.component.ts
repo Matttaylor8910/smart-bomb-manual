@@ -1,36 +1,50 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {BombStateService} from 'src/app/services/bomb-state.service';
-import {ModuleName, MODULES} from 'src/app/services/module.service';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ModuleName, ModuleRequirement, MODULES} from 'src/app/services/module.service';
 
-const MODULE_REQUIREMENT_ICONS: {[key in keyof BombStateService]: string} = {
-  batteries: 'battery-full',
-  carIndicator: 'sunny-outline',
-  frkIndicator: 'sunny-outline',
-  parallel: 'apps-outline',
-  serialEven: 'barcode-outline',
-  serialVowel: 'barcode-outline',
-  strikes: 'skull-outline'
+const MODULE_REQUIREMENT_ICONS: {[key: string]: string} = {
+  [ModuleRequirement.BATTERIES]: 'battery-full',
+  [ModuleRequirement.CAR_INDICATOR]: 'sunny-outline',
+  [ModuleRequirement.FRK_INDICATOR]: 'sunny-outline',
+  [ModuleRequirement.PARALLEL]: 'apps-outline',
+  [ModuleRequirement.SERIAL_EVEN]: 'barcode-outline',
+  [ModuleRequirement.SERIAL_VOWEL]: 'barcode-outline',
+  [ModuleRequirement.STRIKES]: 'skull-outline'
 };
+
+interface RequirementIcon {
+  name: string;
+  info: string;
+}
 
 @Component({
   selector: 'app-module-window',
   templateUrl: './module-window.component.html',
   styleUrls: ['./module-window.component.scss'],
 })
-export class ModuleWindowComponent {
+export class ModuleWindowComponent implements OnInit {
   @Input() module: ModuleName;
   @Output() reloaded = new EventEmitter<void>();
   @Output() closed = new EventEmitter<void>();
 
   ModuleName = ModuleName;
-
-  get requirementIcons(): string[] {
-    const set = new Set<string>();
-    for (const requirement of MODULES[this.module].requirements) {
-      set.add(MODULE_REQUIREMENT_ICONS[requirement]);
-    }
-    return Array.from(set);
-  }
+  requirementIcons: RequirementIcon[] = [];
 
   constructor() {}
+
+  ngOnInit() {
+    this.requirementIcons = this.getRequirementIcons();
+  }
+
+  getRequirementIcons(): RequirementIcon[] {
+    const map = {};
+    for (let requirement of MODULES[this.module].requirements) {
+      const name = MODULE_REQUIREMENT_ICONS[requirement];
+      let info = requirement as string;
+      if (map[name]) {
+        info = `${map[name].info} and ${info}`;
+      }
+      map[name] = {name, info};
+    }
+    return Object.values(map);
+  }
 }

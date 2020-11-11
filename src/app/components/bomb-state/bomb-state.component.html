@@ -1,34 +1,44 @@
 <div class="container">
   <div class="header">
     <h3>Batteries</h3>
-    <ion-icon name="battery-full"></ion-icon>
+    <div class="icon-container" tooltip="Modules with this icon need info about the batteries.">
+      <ion-icon name="battery-full"></ion-icon>
+    </div>
   </div>
   <label for="batteries">How many?</label>
   <input type="number" id="batteries" [(ngModel)]="bombStateService.batteries" placeholder="0">
 
   <div class="header">
     <h3>Indicators</h3>
-    <ion-icon name="sunny-outline"></ion-icon>
+    <div class="icon-container" tooltip="Modules with this icon need info about the indicators.">
+      <ion-icon name="sunny-outline"></ion-icon>
+    </div>
   </div>
   <app-led label="CAR" [(lit)]="bombStateService.carIndicator"></app-led>
   <app-led label="FRK" [(lit)]="bombStateService.frkIndicator"></app-led>
 
   <div class="header">
     <h3>Ports</h3>
-    <ion-icon name="apps-outline"></ion-icon>
+    <div class="icon-container" tooltip="Modules with this icon need info about the ports.">
+      <ion-icon name="apps-outline"></ion-icon>
+    </div>
   </div>
   <ion-button color="dark" size="block" [fill]="bombStateService.parallel ? 'solid' : 'outline'" (click)="bombStateService.parallel = !bombStateService.parallel">Parallel Port</ion-button>
 
   <div class="header">
     <h3>Serial</h3>
-    <ion-icon name="barcode-outline"></ion-icon>
+    <div class="icon-container" tooltip="Modules with this icon need info about the serial number.">
+      <ion-icon name="barcode-outline"></ion-icon>
+    </div>
   </div>
   <ion-button color="dark" size="block" [fill]="bombStateService.serialEven ? 'solid' : 'outline'" (click)="bombStateService.serialEven = !bombStateService.serialEven">Even Serial</ion-button>
   <ion-button color="dark" size="block" [fill]="bombStateService.serialVowel ? 'solid' : 'outline'" (click)="bombStateService.serialVowel = !bombStateService.serialVowel">Vowel in Serial</ion-button>
 
   <div class="header">
     <h3>Strikes</h3>
-    <ion-icon name="skull-outline"></ion-icon>
+    <div class="icon-container" tooltip="Modules with this icon need to know the number of strikes.">
+      <ion-icon name="skull-outline"></ion-icon>
+    </div>
   </div>
   <label for="strikes">How many?</label>
   <input type="number" id="strikes" [(ngModel)]="bombStateService.strikes" placeholder="0">

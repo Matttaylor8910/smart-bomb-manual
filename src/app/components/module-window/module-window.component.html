@@ -2,7 +2,9 @@
   <div class="status-bar">
     <div class="title">
       <span>{{ module }}</span>
-      <ion-icon *ngFor="let name of requirementIcons" [name]="name"></ion-icon>
+      <div class="requirement" *ngFor="let icon of requirementIcons" tooltip="Need to know {{ icon.info }}">
+        <ion-icon [name]="icon.name"></ion-icon>
+      </div>
     </div>
     <div class="controls">
       <ion-icon name="reload" (click)="reloaded.emit()"></ion-icon>

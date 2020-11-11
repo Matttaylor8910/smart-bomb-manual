@@ -2,6 +2,8 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {IonicModule} from '@ionic/angular';
+import {TooltipModule} from 'ng2-tooltip-directive';
+
 import {BombStateComponent} from './bomb-state/bomb-state.component';
 import {ComplicatedWiresComponent} from './complicated-wires/complicated-wires.component';
 import {KeypadsComponent} from './keypads/keypads.component';
@@ -42,6 +44,11 @@ import {WiresComponent} from './wires/wires.component';
     IonicModule,
     CommonModule,
     FormsModule,
+    TooltipModule.forRoot({
+      'placement': 'bottom',
+      'hide-delay': 0,
+      'displayTouchscreen': false,
+    }),
   ],
   exports: [
     BombStateComponent,

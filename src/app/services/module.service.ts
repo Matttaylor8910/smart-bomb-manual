@@ -16,16 +16,33 @@ export enum ModuleName {
   WIRES = 'Wires',
 }
 
+// Will be shown in the tooltip with a message like:
+// Need to know ______
+//
+// e.g. Need to know if there is a parallel port
+export enum ModuleRequirement {
+  BATTERIES = 'the number of batteries',
+  CAR_INDICATOR = 'if there is a CAR indicator',
+  FRK_INDICATOR = 'if there is an FRK indicator',
+  PARALLEL = 'if there is a parallel port',
+  SERIAL_EVEN = 'if the last number of serial number is even',
+  SERIAL_VOWEL = 'if the serial number has a vowel',
+  STRIKES = 'the number of strikes',
+}
+
 interface Module {
   name: ModuleName;
   // Bomb state fields that this module relies on
-  requirements: (keyof BombStateService)[];
+  requirements: ModuleRequirement[];
 }
 
 export const MODULES: {[key in ModuleName]: Module} = {
   [ModuleName.COMPLICATED_WIRES]: {
     name: ModuleName.COMPLICATED_WIRES,
-    requirements: ['batteries', 'parallel', 'serialEven'],
+    requirements: [
+      ModuleRequirement.BATTERIES, ModuleRequirement.PARALLEL,
+      ModuleRequirement.SERIAL_EVEN
+    ],
   },
   [ModuleName.KEYPADS]: {
     name: ModuleName.KEYPADS,
@@ -53,11 +70,12 @@ export const MODULES: {[key in ModuleName]: Module} = {
   },
   [ModuleName.SIMON_SAYS]: {
     name: ModuleName.SIMON_SAYS,
-    requirements: ['serialVowel', 'strikes'],
+    requirements: [ModuleRequirement.SERIAL_VOWEL, ModuleRequirement.STRIKES],
   },
   [ModuleName.THE_BUTTON]: {
     name: ModuleName.THE_BUTTON,
-    requirements: ['carIndicator', 'frkIndicator'],
+    requirements:
+        [ModuleRequirement.CAR_INDICATOR, ModuleRequirement.FRK_INDICATOR],
   },
   [ModuleName.WHOS_ON_FIRST]: {
     name: ModuleName.WHOS_ON_FIRST,
@@ -69,7 +87,7 @@ export const MODULES: {[key in ModuleName]: Module} = {
   },
   [ModuleName.WIRES]: {
     name: ModuleName.WIRES,
-    requirements: ['serialEven'],
+    requirements: [ModuleRequirement.SERIAL_EVEN],
   },
 };
 

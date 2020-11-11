@@ -30,6 +30,7 @@ ion-toolbar {
 
   .sidebar {
     width: 250px;
+    min-width: 190px;
     background: var(--ion-color-light);
     overflow: auto;
   }
