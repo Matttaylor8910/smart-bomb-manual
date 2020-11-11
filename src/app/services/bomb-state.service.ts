@@ -29,10 +29,6 @@ export class BombStateService {
     this.reloadAllModules();
   }
 
-  closeAllModules() {
-    this.moduleService.loadedModules = [];
-  }
-
   private reloadAllModules() {
     for (let i = 0; i < this.moduleService.loadedModules.length; i++) {
       this.moduleService.reloadModule(i);

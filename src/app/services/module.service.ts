@@ -117,6 +117,10 @@ export class ModuleService {
     this.saveModules();
   }
 
+  closeAllModules() {
+    this.loadedModules = [];
+  }
+
   private saveModules() {
     const moduleNames = this.loadedModules.map(module => module.name);
     localStorage.setItem('loadedModules', JSON.stringify(moduleNames));
