@@ -42,4 +42,10 @@
   </div>
   <label for="strikes">How many?</label>
   <input type="number" id="strikes" [(ngModel)]="bombStateService.strikes" placeholder="0">
+
+  <div class="header">
+    <h3>Reset?</h3>
+  </div>
+  <ion-button color="dark" size="block" fill="outline" (click)="bombStateService.resetBomb()">Reset Bomb</ion-button>
+  <ion-button color="dark" size="block" fill="outline" (click)="bombStateService.closeAllModules()">Close All Modules</ion-button>
 </div>

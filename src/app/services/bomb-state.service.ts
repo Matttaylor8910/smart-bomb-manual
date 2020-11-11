@@ -1,14 +1,41 @@
 import {Injectable} from '@angular/core';
+import {ModuleService} from './module.service';
 
 @Injectable({providedIn: 'root'})
 export class BombStateService {
-  carIndicator = false;
+  carIndicator: boolean;
   batteries?: number;
-  frkIndicator = false;
-  parallel = false;
-  serialEven = false;
-  serialVowel = false;
+  frkIndicator: boolean;
+  parallel: boolean;
+  serialEven: boolean;
+  serialVowel: boolean;
   strikes?: number;
 
-  constructor() {}
+  constructor(
+      private readonly moduleService: ModuleService,
+  ) {
+    this.resetBomb();
+  }
+
+  resetBomb() {
+    this.carIndicator = false;
+    this.batteries = undefined;
+    this.frkIndicator = false;
+    this.parallel = false;
+    this.serialEven = false;
+    this.serialVowel = false;
+    this.strikes = undefined;
+
+    this.reloadAllModules();
+  }
+
+  closeAllModules() {
+    this.moduleService.loadedModules = [];
+  }
+
+  private reloadAllModules() {
+    for (let i = 0; i < this.moduleService.loadedModules.length; i++) {
+      this.moduleService.reloadModule(i);
+    }
+  }
 }
