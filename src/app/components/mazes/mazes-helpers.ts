@@ -52,84 +52,145 @@ const TBL = MazeCell({top: true, bottom: true, left: true});
 const RBL = MazeCell({right: true, bottom: true, left: true});
 
 type Row = [MazeCell, MazeCell, MazeCell, MazeCell, MazeCell, MazeCell];
-type Maze = [Row, Row, Row, Row, Row, Row];
+interface Coordinate {
+  row: number;
+  col: number;
+}
+export interface Maze {
+  circles: Coordinate[];
+  rows: [Row, Row, Row, Row, Row, Row];
+}
 
 // There are nine possible mazes
 // Each maze is stored as an array of arrays:
 // - The OUTER array represents the rows, from top to bottom
 // - Each INNER array represents the cells in that row, from left to right
-const ALPHA: Maze = [
-  [TL, T, TR, TL, T, TR],
-  [RL, TL, RB, BL, TB, TR],
-  [RL, BL, TR, TL, TB, R],
-  [TL, TBL, B, RB, TB, R],
-  [L, TB, TR, TL, TRB, RL],
-  [BL, TRB, BL, RB, TBL, RB],
-];
-const BRAVO: Maze = [
-  [TBL, T, TRB, TL, T, TRB],
-  [TL, RB, TL, RB, BL, TR],
-  [RL, TL, RB, TL, TB, R],
-  [L, RB, TL, RB, TRL, RL],
-  [RL, TRL, RL, TL, RB, RL],
-  [RBL, BL, RB, BL, TB, RB],
-];
-const CHARLIE: Maze = [
-  [TL, TB, TR, TRL, TL, TR],
-  [TBL, TRL, RL, BL, RB, RL],
-  [TL, R, RL, TL, TR, RL],
-  [RL, RL, RL, RL, RL, RL],
-  [RL, BL, RB, RL, RL, RL],
-  [BL, TB, TB, RB, BL, RB],
-];
-const DELTA: Maze = [
-  [TL, TR, TBL, TB, TB, TR],
-  [RL, RL, TL, TB, TB, R],
-  [RL, BL, RB, TL, TRB, RL],
-  [RL, TBL, TB, B, TB, R],
-  [L, TB, TB, TB, TR, RL],
-  [BL, TB, TRB, TBL, RB, RBL],
-];
-const ECHO: Maze = [
-  [TBL, TB, TB, TB, T, TR],
-  [TL, TB, TB, T, RB, RBL],
-  [L, TR, TBL, RB, TL, TR],
-  [RL, BL, TB, TR, TBL, RL],
-  [RL, TL, TB, B, TRB, RL],
-  [RBL, BL, TB, TB, TB, RB],
-];
-const FOXTROT: Maze = [
-  [TRL, TL, TR, TBL, T, TR],
-  [RL, RL, RL, TR, TB, RL],
-  [L, RB, RBL, RL, TL, RB],
-  [BL, TR, TL, R, RL, TRL],
-  [TL, RB, RBL, RL, BL, R],
-  [BL, TB, TB, RB, TBL, RB],
-];
-const GOLF: Maze = [
-  [TL, TB, TB, TR, RL, TR],
-  [RL, TL, TRB, BL, RB, RL],
-  [RL, BL, TL, TRB, TL, RB],
-  [TL, TR, L, TB, RB, TRL],
-  [RL, RBL, BL, TB, TR, RL],
-  [BL, TB, TB, TB, B, RB],
-];
-const HOTEL: Maze = [
-  [TRL, TL, TB, TR, TL, TR],
-  [L, B, TRB, BL, RB, RL],
-  [RL, TL, TB, TB, TR, RL],
-  [RL, BL, TR, TBL, B, RB],
-  [RL, TRL, BL, TB, TB, TRB],
-  [BL, B, TB, TB, TB, TRB],
-];
-const INDIA: Maze = [
-  [TRL, T, TB, TB, T, TR],
-  [RL, RL, TL, TRB, RL, RL],
-  [L, B, RB, TL, RB, RL],
-  [RL, TRL, T, RB, TBL, R],
-  [RL, RL, RL, TL, TR, RBL],
-  [BL, RB, BL, RB, BL, RB],
-];
+const ALPHA: Maze = {
+  circles: [
+    {row: 1, col: 0},
+    {row: 2, col: 5},
+  ],
+  rows: [
+    [TL, T, TR, TL, T, TR],
+    [RL, TL, RB, BL, TB, TR],
+    [RL, BL, TR, TL, TB, R],
+    [TL, TBL, B, RB, TB, R],
+    [L, TB, TR, TL, TRB, RL],
+    [BL, TRB, BL, RB, TBL, RB],
+  ]
+};
+const BRAVO: Maze = {
+  circles: [
+    {row: 1, col: 4},
+    {row: 3, col: 1},
+  ],
+  rows: [
+    [TBL, T, TRB, TL, T, TRB],
+    [TL, RB, TL, RB, BL, TR],
+    [RL, TL, RB, TL, TB, R],
+    [L, RB, TL, RB, TRL, RL],
+    [RL, TRL, RL, TL, RB, RL],
+    [RBL, BL, RB, BL, TB, RB],
+  ]
+};
+const CHARLIE: Maze = {
+  circles: [
+    {row: 3, col: 3},
+    {row: 3, col: 5},
+  ],
+  rows: [
+    [TL, TB, TR, TRL, TL, TR],
+    [TBL, TRL, RL, BL, RB, RL],
+    [TL, R, RL, TL, TR, RL],
+    [RL, RL, RL, RL, RL, RL],
+    [RL, BL, RB, RL, RL, RL],
+    [BL, TB, TB, RB, BL, RB],
+  ]
+};
+const DELTA: Maze = {
+  circles: [
+    {row: 0, col: 0},
+    {row: 3, col: 0},
+  ],
+  rows: [
+    [TL, TR, TBL, TB, TB, TR],
+    [RL, RL, TL, TB, TB, R],
+    [RL, BL, RB, TL, TRB, RL],
+    [RL, TBL, TB, B, TB, R],
+    [L, TB, TB, TB, TR, RL],
+    [BL, TB, TRB, TBL, RB, RBL],
+  ]
+};
+const ECHO: Maze = {
+  circles: [
+    {row: 2, col: 4},
+    {row: 5, col: 3},
+  ],
+  rows: [
+    [TBL, TB, TB, TB, T, TR],
+    [TL, TB, TB, T, RB, RBL],
+    [L, TR, TBL, RB, TL, TR],
+    [RL, BL, TB, TR, TBL, RL],
+    [RL, TL, TB, B, TRB, RL],
+    [RBL, BL, TB, TB, TB, RB],
+  ]
+};
+const FOXTROT: Maze = {
+  circles: [
+    {row: 0, col: 4},
+    {row: 4, col: 2},
+  ],
+  rows: [
+    [TRL, TL, TR, TBL, T, TR],
+    [RL, RL, RL, TR, TB, RL],
+    [L, RB, RBL, RL, TL, RB],
+    [BL, TR, TL, R, RL, TRL],
+    [TL, RB, RBL, RL, BL, R],
+    [BL, TB, TB, RB, TBL, RB],
+  ]
+};
+const GOLF: Maze = {
+  circles: [
+    {row: 0, col: 1},
+    {row: 5, col: 1},
+  ],
+  rows: [
+    [TL, TB, TB, TR, RL, TR],
+    [RL, TL, TRB, BL, RB, RL],
+    [RL, BL, TL, TRB, TL, RB],
+    [TL, TR, L, TB, RB, TRL],
+    [RL, RBL, BL, TB, TR, RL],
+    [BL, TB, TB, TB, B, RB],
+  ]
+};
+const HOTEL: Maze = {
+  circles: [
+    {row: 0, col: 3},
+    {row: 3, col: 2},
+  ],
+  rows: [
+    [TRL, TL, TB, TR, TL, TR],
+    [L, B, TRB, BL, RB, RL],
+    [RL, TL, TB, TB, TR, RL],
+    [RL, BL, TR, TBL, B, RB],
+    [RL, TRL, BL, TB, TB, TRB],
+    [BL, B, TB, TB, TB, TRB],
+  ]
+};
+const INDIA: Maze = {
+  circles: [
+    {row: 1, col: 2},
+    {row: 4, col: 0},
+  ],
+  rows: [
+    [TRL, T, TB, TB, T, TR],
+    [RL, RL, TL, TRB, RL, RL],
+    [L, B, RB, TL, RB, RL],
+    [RL, TRL, T, RB, TBL, R],
+    [RL, RL, RL, TL, TR, RBL],
+    [BL, RB, BL, RB, BL, RB],
+  ]
+};
 
 // key: column pair for a given maze (the toString() of Column[])
 // value: the maze

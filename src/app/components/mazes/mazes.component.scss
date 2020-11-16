@@ -4,9 +4,9 @@
   align-items: center;
 
   height: 100%;
-  padding: 10px 5px;
+  padding: 10px;
 
-  span {
+  .action {
     text-align: center;
   }
 
@@ -16,6 +16,15 @@
 
     ion-button {
       flex-grow: 1;
+    }
+  }
+
+  .maze {
+    .row {
+      .cell {
+        width: 10px;
+        height: 10px;
+      }
     }
   }
 }

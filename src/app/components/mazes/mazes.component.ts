@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
-import {Column, COLUMN_PAIRS} from './mazes-helpers';
+
+import {Column, COLUMN_PAIRS, Maze, MAZES} from './mazes-helpers';
 
 
 
@@ -11,6 +12,8 @@ import {Column, COLUMN_PAIRS} from './mazes-helpers';
 export class MazesComponent {
   firstGreenCircle?: Column;
   secondGreenCircle?: Column;
+
+  maze: Maze;
 
   constructor() {}
 
@@ -47,5 +50,11 @@ export class MazesComponent {
     } else {
       this.secondGreenCircle = idx;
     }
+
+    this.setMaze();
+  }
+
+  private setMaze() {
+    this.maze = MAZES[`${this.firstGreenCircle},${this.secondGreenCircle}`];
   }
 }

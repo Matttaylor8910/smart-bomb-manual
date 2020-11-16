@@ -1,5 +1,5 @@
 <div class="root">
-  <span>Select the columns of the green circles.</span>
+  <span class="action">Select the columns of the green circles.</span>
   <div class="button-row" *ngFor="let _ of [].constructor(2); let row = index">
     <ion-button
       *ngFor="let _ of [].constructor(6); let idx = index"
@@ -9,5 +9,13 @@
     >
       {{ idx + 1 }}
     </ion-button>
+  </div>
+
+  <div class="maze" *ngIf="maze">
+    <div class="row" *ngFor="let row of maze.rows">
+      <div class="cell" *ngFor="let cell of row">
+        x
+      </div>
+    </div>
   </div>
 </div>
