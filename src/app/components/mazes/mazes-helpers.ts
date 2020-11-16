@@ -57,7 +57,7 @@ interface Coordinate {
   col: number;
 }
 export interface Maze {
-  circles: Coordinate[];
+  circles: [Coordinate, Coordinate];
   rows: [Row, Row, Row, Row, Row, Row];
 }
 
@@ -212,3 +212,102 @@ export const MAZES: {[key: string]: Maze} = {
   '0,2': INDIA,
   '2,0': INDIA,
 };
+
+enum Direction {
+  UP,
+  RIGHT,
+  DOWN,
+  LEFT,
+}
+
+interface MazeSearchState {
+  position: Coordinate;
+  fromDirection?: Direction;
+  path: Direction[];
+}
+
+// Given a MazeSearchState, return all possible future states we can get by
+// moving one cell from this one without backtracking or going through a wall.
+function getFutures(state: MazeSearchState, maze: Maze): MazeSearchState[] {
+  const futures: MazeSearchState[] = [];
+  const {fromDirection, path} = state;
+  const {row, col} = state.position;
+  const cell = maze[row][col];
+  // Up
+  if (fromDirection !== Direction.UP && !cell.top) {
+    // If we didn't come from up and there is no wall up
+    futures.push({
+      position: {
+        row: row - 1,
+        col,
+      },
+      fromDirection: Direction.DOWN,
+      path: [...path, Direction.UP],
+    });
+  }
+  // Right
+  if (fromDirection !== Direction.RIGHT && !cell.right) {
+    futures.push({
+      position: {
+        row,
+        col: col + 1,
+      },
+      fromDirection: Direction.LEFT,
+      path: [...path, Direction.RIGHT],
+    });
+  }
+  // Down
+  if (fromDirection !== Direction.DOWN && !cell.bottom) {
+    futures.push({
+      position: {
+        row: row + 1,
+        col,
+      },
+      fromDirection: Direction.UP,
+      path: [...path, Direction.DOWN],
+    });
+  }
+  // Left
+  if (fromDirection !== Direction.LEFT && !cell.left) {
+    futures.push({
+      position: {
+        row,
+        col: col - 1,
+      },
+      fromDirection: Direction.RIGHT,
+      path: [...path, Direction.LEFT],
+    });
+  }
+  return futures;
+}
+
+export function solveMaze(
+    maze: Maze,
+    start: Coordinate,
+    end: Coordinate,
+    ): Direction[] {
+  // Simple BFS for finding the shortest path from start to end
+  // Since there are no loops in these mazes, we do not need to keep track of
+  // all cells we've been in, only where we came from in each step
+  const initialState: MazeSearchState = {
+    position: start,
+    path: [],
+  };
+  const stateQueue = [initialState];
+
+  while (stateQueue.length !== 0) {
+    // Dequeue a state, check if it's a winner, and enqueue its futures
+    const currentState = stateQueue.splice(0, 1)[0];
+    if (currentState.position.row === end.row &&
+        currentState.position.col === end.col) {
+      // Found the end!
+      return currentState.path;
+    } else {
+      // Still searching
+      stateQueue.push(...getFutures(currentState, maze));
+    }
+  }
+
+  // Unsolvable maze
+  return [];
+}
