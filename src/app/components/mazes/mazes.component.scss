@@ -20,10 +20,31 @@
   }
 
   .maze {
+    border: 1px solid var(--ion-color-dark);
+
     .row {
+      display: flex;
+
       .cell {
-        width: 10px;
-        height: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 25px;
+        width: 40px;
+        height: 40px;
+
+        &.top {
+          border-top: 1px solid var(--ion-color-dark);
+        }
+        &.right {
+          border-right: 1px solid var(--ion-color-dark);
+        }
+        &.bottom {
+          border-bottom: 1px solid var(--ion-color-dark);
+        }
+        &.left {
+          border-left: 1px solid var(--ion-color-dark);
+        }
       }
     }
   }

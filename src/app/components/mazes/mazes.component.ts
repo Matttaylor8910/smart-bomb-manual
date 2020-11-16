@@ -13,7 +13,7 @@ export class MazesComponent {
   firstGreenCircle?: Column;
   secondGreenCircle?: Column;
 
-  maze: Maze;
+  maze: Maze = MAZES['0,0'];
 
   constructor() {}
 
@@ -52,6 +52,16 @@ export class MazesComponent {
     }
 
     this.setMaze();
+  }
+
+  hasCircle(row: number, col: number): boolean {
+    if (this.maze) {
+      return !!this.maze.circles.find(circle => {
+        return circle.row === row && circle.col === col;
+      });
+    }
+
+    return false;
   }
 
   private setMaze() {
