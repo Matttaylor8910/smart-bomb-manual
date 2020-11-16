@@ -16,6 +16,10 @@
 
     ion-button {
       flex-grow: 1;
+
+      &[disabled] {
+        opacity: .1;
+      }
     }
   }
 
