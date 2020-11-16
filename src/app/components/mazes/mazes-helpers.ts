@@ -4,7 +4,7 @@ export type Column = 0|1|2|3|4|5;
 // value: possible columns of the other green circle
 // these coordinates are zero-indexed, from left to right
 export const COLUMN_PAIRS: {[key in Column]: Set<Column>} = {
-  0: new Set([0, 5]),
+  0: new Set([0, 2, 5]),
   1: new Set([1, 4]),
   2: new Set([0, 3, 4]),
   3: new Set([2, 4, 5]),
