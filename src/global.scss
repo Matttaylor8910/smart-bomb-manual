@@ -32,6 +32,7 @@ body * {
   font-family: 'Space Mono', monospace;
   --ion-font-family: 'Space Mono', monospace;
   letter-spacing: 1px;
+  touch-action: manipulation;
 }
 
 .module-container{
