@@ -101,34 +101,34 @@ const ECHO: Maze = [
 const FOXTROT: Maze = [
   [TRL, TL, TR, TBL, T, TR],
   [RL, RL, RL, TR, TB, RL],
-  [],
-  [],
-  [],
-  [],
+  [L, RB, RBL, RL, TL, RB],
+  [BL, TR, TL, R, RL, TRL],
+  [TL, RB, RBL, RL, BL, R],
+  [BL, TB, TB, RB, TBL, RB],
 ];
 const GOLF: Maze = [
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
+  [TL, TB, TB, TR, RL, TR],
+  [RL, TL, TRB, BL, RB, RL],
+  [RL, BL, TL, TRB, TL, RB],
+  [TL, TR, L, TB, RB, TRL],
+  [RL, RBL, BL, TB, TR, RL],
+  [BL, TB, TB, TB, B, RB],
 ];
 const HOTEL: Maze = [
   [TRL, TL, TB, TR, TL, TR],
   [L, B, TRB, BL, RB, RL],
   [RL, TL, TB, TB, TR, RL],
   [RL, BL, TR, TBL, B, RB],
-  [],
-  [],
+  [RL, TRL, BL, TB, TB, TRB],
+  [BL, B, TB, TB, TB, TRB],
 ];
 const INDIA: Maze = [
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
+  [TRL, T, TB, TB, T, TR],
+  [RL, RL, TL, TRB, RL, RL],
+  [L, B, RB, TL, RB, RL],
+  [RL, TRL, T, RB, TBL, R],
+  [RL, RL, RL, TL, TR, RBL],
+  [BL, RB, BL, RB, BL, RB],
 ];
 
 // key: column pair for a given maze (the toString() of Column[])
