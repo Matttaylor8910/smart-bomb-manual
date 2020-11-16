@@ -9,7 +9,7 @@
   .inputs {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     width: 100%;
 
     ion-button {
@@ -75,6 +75,11 @@
 
   .letters {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    min-height: 114px;
+    margin: 10px 0;
 
     .letter {
       display: flex;

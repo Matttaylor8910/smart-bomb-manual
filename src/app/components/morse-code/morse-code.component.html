@@ -1,19 +1,23 @@
 <div class="module-container">
   <div class="inputs">
-    <ion-button class="dot" color="light" (click)="addDot()" [disabled]="inputDisabled">.</ion-button>
-    <ion-button class="dash" color="light" (click)="addDash()" [disabled]="inputDisabled">-</ion-button>
+    <span>
+      <ion-button class="dot" color="light" (click)="addDot()" [disabled]="inputDisabled">.</ion-button>
+      <ion-button class="dash" color="light" (click)="addDash()" [disabled]="inputDisabled">-</ion-button>
+    </span>
     <div class="preview">
       <div class="input">
         <div [class.dash]="symbol === Morse.DASH" [class.dot]="symbol === Morse.DOT" *ngFor="let symbol of input"></div>
       </div>
       <div class="letter">{{ letter }}</div>
     </div>
-    <ion-button color="light" [disabled]="!letter" (click)="add()">
-      Add
-    </ion-button>
-    <ion-button color="danger" fill="clear" [disabled]="input.length === 0" (click)="clear()">
-      Clear
-    </ion-button>
+    <span>
+      <ion-button color="light" [disabled]="!letter" (click)="add()">
+        Add
+      </ion-button>
+      <ion-button color="danger" fill="clear" [disabled]="input.length === 0" (click)="clear()">
+        Clear
+      </ion-button>
+    </span>
   </div>
 
   <div class="letters">
