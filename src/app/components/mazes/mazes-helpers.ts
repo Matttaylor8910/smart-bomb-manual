@@ -71,10 +71,10 @@ const ALPHA: Maze = {
     {row: 2, col: 5},
   ],
   rows: [
-    [TL, T, TR, TL, T, TR],
+    [TL, TB, TR, TL, TB, TRB],
     [RL, TL, RB, BL, TB, TR],
     [RL, BL, TR, TL, TB, R],
-    [TL, TBL, B, RB, TB, R],
+    [RL, TBL, B, RB, TBL, R],
     [L, TB, TR, TL, TRB, RL],
     [BL, TRB, BL, RB, TBL, RB],
   ]
@@ -100,7 +100,7 @@ const CHARLIE: Maze = {
   ],
   rows: [
     [TL, TB, TR, TRL, TL, TR],
-    [TBL, TRL, RL, BL, RB, RL],
+    [RBL, TRL, RL, BL, RB, RL],
     [TL, R, RL, TL, TR, RL],
     [RL, RL, RL, RL, RL, RL],
     [RL, BL, RB, RL, RL, RL],
@@ -130,7 +130,7 @@ const ECHO: Maze = {
     [TBL, TB, TB, TB, T, TR],
     [TL, TB, TB, T, RB, RBL],
     [L, TR, TBL, RB, TL, TR],
-    [RL, BL, TB, TR, TBL, RL],
+    [RL, BL, TB, TR, RBL, RL],
     [RL, TL, TB, B, TRB, RL],
     [RBL, BL, TB, TB, TB, RB],
   ]
@@ -142,7 +142,7 @@ const FOXTROT: Maze = {
   ],
   rows: [
     [TRL, TL, TR, TBL, T, TR],
-    [RL, RL, RL, TR, TB, RL],
+    [RL, RL, RL, TL, RB, RL],
     [L, RB, RBL, RL, TL, RB],
     [BL, TR, TL, R, RL, TRL],
     [TL, RB, RBL, RL, BL, R],
