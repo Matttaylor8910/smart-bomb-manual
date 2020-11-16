@@ -49,20 +49,22 @@
 
     .input {
       display: flex;
+      align-items: center;
       padding: 7px 0;
 
       .dot, .dash {
-        height: 6px;
         background: var(--ion-color-dark);
         margin: 0 1px;
       }
 
       .dot {
+        height: 6px;
         width: 6px;
         border-radius: 50%;
       }
 
       .dash {
+        height: 4px;
         width: 12px;
       }
     }
