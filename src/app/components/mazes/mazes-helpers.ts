@@ -155,9 +155,9 @@ const GOLF: Maze = {
     {row: 5, col: 1},
   ],
   rows: [
-    [TL, TB, TB, TR, RL, TR],
+    [TL, TB, TB, TR, TL, TR],
     [RL, TL, TRB, BL, RB, RL],
-    [RL, BL, TL, TRB, TL, RB],
+    [BL, RB, TL, TRB, TL, RB],
     [TL, TR, L, TB, RB, TRL],
     [RL, RBL, BL, TB, TR, RL],
     [BL, TB, TB, TB, B, RB],
