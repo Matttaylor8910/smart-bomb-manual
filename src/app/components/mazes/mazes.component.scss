@@ -87,3 +87,9 @@
     }
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .maze .cell.selectable:hover:not([disabled]) {
+    background: #333 !important;
+  }
+}

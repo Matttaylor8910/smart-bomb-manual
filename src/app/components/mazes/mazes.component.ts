@@ -122,6 +122,19 @@ export class MazesComponent {
         this.redTriangle.col === col;
   }
 
+  setPhase(phase: Phase) {
+    if (phase === Phase.SET_CIRCLES) {
+      delete this.firstGreenCircle;
+      delete this.secondGreenCircle;
+      delete this.maze;
+    } else if (phase === Phase.SET_WHITE_LIGHT) {
+      delete this.whiteLight;
+    } else if (phase === Phase.SET_RED_TRIANGLE) {
+      delete this.redTriangle;
+    }
+    this.phase = phase;
+  }
+
   private setMaze() {
     this.maze = MAZES[`${this.firstGreenCircle},${this.secondGreenCircle}`];
   }
