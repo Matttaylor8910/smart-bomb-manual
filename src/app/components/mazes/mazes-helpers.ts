@@ -206,7 +206,7 @@ const EMPTY: Maze = {
     [L, E, E, E, E, R],
     [BL, B, B, B, B, RB],
   ]
-}
+};
 
 // key: column pair for a given maze (the toString() of Column[])
 // value: the maze
@@ -227,14 +227,14 @@ export const MAZES: {[key: string]: Maze} = {
   '3,2': HOTEL,
   '0,2': INDIA,
   '2,0': INDIA,
-  EMPTY: EMPTY,
+  EMPTY,
 };
 
-enum Direction {
-  UP,
-  RIGHT,
-  DOWN,
-  LEFT,
+export enum Direction {
+  UP = 'Up',
+  RIGHT = 'Right',
+  DOWN = 'Down',
+  LEFT = 'Left',
 }
 
 interface MazeSearchState {
@@ -249,7 +249,7 @@ function getFutures(state: MazeSearchState, maze: Maze): MazeSearchState[] {
   const futures: MazeSearchState[] = [];
   const {fromDirection, path} = state;
   const {row, col} = state.position;
-  const cell = maze[row][col];
+  const cell = maze.rows[row][col];
   // Up
   if (fromDirection !== Direction.UP && !cell.top) {
     // If we didn't come from up and there is no wall up

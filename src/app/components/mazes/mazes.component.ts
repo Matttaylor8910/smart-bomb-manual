@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 
-import {Column, COLUMN_PAIRS, Coordinate, Maze, MAZES, Row} from './mazes-helpers';
+import {Column, COLUMN_PAIRS, Coordinate, Direction, Maze, MAZES, Row, solveMaze} from './mazes-helpers';
 
 enum Phase {
   SET_CIRCLES = 'SET_CIRCLES',
@@ -19,11 +19,12 @@ export class MazesComponent {
 
   firstGreenCircle?: Column;
   secondGreenCircle?: Column;
-  whiteLight: Coordinate;
-  redTriangle: Coordinate;
+  whiteLight?: Coordinate;
+  redTriangle?: Coordinate;
 
-  maze: Maze;
+  maze?: Maze;
   phase: Phase;
+  solution: Direction[] = [];
 
   constructor() {
     this.setNextPhase();
@@ -43,7 +44,7 @@ export class MazesComponent {
       case Phase.SET_RED_TRIANGLE:
         return 'Select the cell on the maze that contains the red triangle';
       case Phase.SHOW_ANSWER:
-        return 'BRIK SEND HELP PLS';
+        return this.solution.join(', ');
       default:
         return 'The devs messed up, file a bug';
     }
@@ -89,8 +90,8 @@ export class MazesComponent {
       this.secondGreenCircle = idx;
     }
 
-    this.setNextPhase();
     this.setMaze();
+    this.setNextPhase();
   }
 
   handleCellClick(row: number, col: number) {
@@ -147,6 +148,7 @@ export class MazesComponent {
     } else if (!this.redTriangle) {
       this.phase = Phase.SET_RED_TRIANGLE;
     } else {
+      this.solution = solveMaze(this.maze, this.whiteLight, this.redTriangle);
       this.phase = Phase.SHOW_ANSWER;
     }
   }
