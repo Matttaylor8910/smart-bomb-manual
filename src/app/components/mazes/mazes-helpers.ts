@@ -52,7 +52,7 @@ const TBL = MazeCell({top: true, bottom: true, left: true});
 const RBL = MazeCell({right: true, bottom: true, left: true});
 
 type Row = [MazeCell, MazeCell, MazeCell, MazeCell, MazeCell, MazeCell];
-interface Coordinate {
+export interface Coordinate {
   row: number;
   col: number;
 }

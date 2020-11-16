@@ -1,28 +1,38 @@
 <div class="root">
-  <span class="action">Select the columns of the green circles.</span>
-  <div class="button-row" *ngFor="let _ of [].constructor(2); let row = index">
-    <ion-button
-      *ngFor="let _ of [].constructor(6); let idx = index"
-      [color]="isGreenCircleButtonClicked(row, idx) ? 'success' : 'light'"
-      [disabled]="isGreenCircleButtonDisabled(row, idx)"
-      (click)="handleGreenCircleClick(row, idx)"
-    >
-      {{ idx + 1 }}
-    </ion-button>
-  </div>
-
-  <div class="maze" *ngIf="maze">
-    <div class="row" *ngFor="let row of maze.rows; let r = index">
-      <div
-        *ngFor="let cell of row; let c = index"
-        class="cell"
-        [class.top]="cell.top"
-        [class.right]="cell.right"
-        [class.bottom]="cell.bottom"
-        [class.left]="cell.left"
+  <div>
+    <div class="button-row" *ngFor="let _ of [].constructor(2); let row = index">
+      <ion-button
+        *ngFor="let _ of [].constructor(6); let idx = index"
+        [color]="isGreenCircleButtonClicked(row, idx) ? 'success' : 'light'"
+        [disabled]="isGreenCircleButtonDisabled(row, idx)"
+        (click)="handleGreenCircleClick(row, idx)"
       >
-        <ion-icon name="ellipse-outline" color="success" *ngIf="hasCircle(r, c)"></ion-icon>
-      </div>
+        {{ idx + 1 }}
+      </ion-button>
     </div>
   </div>
+
+  <div class="maze">
+    <ng-container *ngIf="maze">
+      <div class="row" *ngFor="let row of maze.rows; let r = index">
+        <div class="row-number">{{ r + 1 }}</div>
+        <div
+          *ngFor="let cell of row; let c = index"
+          class="cell"
+          [class.top]="cell.top"
+          [class.right]="cell.right"
+          [class.bottom]="cell.bottom"
+          [class.left]="cell.left"
+          (click)="handleCellClick(r, c)"
+        >
+          <div class="cell-number" *ngIf="r === 0">{{ c + 1 }}</div>
+          <ion-icon name="ellipse-outline" color="success" *ngIf="hasCircle(r, c)"></ion-icon>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+  <span class="advice">
+    {{ advice }}
+  </span>
 </div>
