@@ -1,0 +1,110 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 100%;
+  padding: 10px;
+
+  .advice {
+    text-align: center;
+  }
+
+  .button-row {
+    display: flex;
+    justify-content: space-between;
+
+    ion-button {
+      flex-grow: 1;
+
+      &[disabled] {
+        opacity: .1;
+      }
+    }
+  }
+
+  .maze-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .maze {
+    margin-top: 25px;
+    border: 1px solid var(--ion-color-dark);
+    width: 266px;
+    height: 266px;
+
+    .row {
+      display: flex;
+      position: relative;
+
+      .row-number {
+        position: absolute;
+        left: -20px;
+        top: 10px;
+      }
+
+      .cell {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 44px;
+        height: 44px;
+        padding: 1px;
+
+        .cell-number {
+          font-size: initial;
+          position: absolute;
+          top: -30px;
+        }
+
+        &.top {
+          border-top: 1px solid var(--ion-color-dark);
+          padding-top: 0;
+        }
+        &.right {
+          border-right: 1px solid var(--ion-color-dark);
+          padding-right: 0;
+        }
+        &.bottom {
+          border-bottom: 1px solid var(--ion-color-dark);
+          padding-bottom: 0;
+        }
+        &.left {
+          border-left: 1px solid var(--ion-color-dark);
+          padding-left: 0;
+        }
+
+        &.selectable:hover:not([disabled]) {
+          background: #ddd;
+          cursor: pointer;
+        }
+
+        ion-icon {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 20px;
+
+          &.circle {
+            font-size: 40px;
+          }
+
+          &.triangle {
+            padding-bottom: 3px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .maze .cell.selectable:hover:not([disabled]) {
+    background: #333 !important;
+  }
+}

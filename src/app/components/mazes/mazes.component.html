@@ -1,1 +1,53 @@
-<iframe width="600" height="540" src="https://ktane-solver.droppages.com/maze.html" style="background: white;"></iframe>
+<div class="root">
+  <div class="maze-container">
+    <div class="maze">
+      <div class="row" *ngFor="let row of rows; let r = index">
+        <div class="row-number">{{ r + 1 }}</div>
+        <div
+          *ngFor="let cell of row; let c = index"
+          class="cell"
+          [class.top]="cell.top"
+          [class.right]="cell.right"
+          [class.bottom]="cell.bottom"
+          [class.left]="cell.left"
+          [class.selectable]="selectable"
+          (click)="handleCellClick(r, c)"
+        >
+          <div class="cell-number" *ngIf="r === 0">{{ c + 1 }}</div>
+          <ion-icon class="circle" name="ellipse-outline" color="success" *ngIf="hasGreenCircle(r, c)"></ion-icon>
+          <ion-icon class="light" [name]="darkMode ? 'square' : 'square-outline'" color="dark" *ngIf="hasWhiteLight(r, c)"></ion-icon>
+          <ion-icon class="triangle" name="triangle" color="danger" *ngIf="hasRedTriangle(r, c)"></ion-icon>
+        </div>
+      </div>
+    </div>
+
+    <div class="button-row">
+      <ion-button size="small" color="success" fill="clear" (click)="setPhase(Phase.SET_CIRCLES)" [disabled]="firstGreenCircle === undefined">
+        Reset <ion-icon name="ellipse-outline" color="success"></ion-icon>
+      </ion-button>
+      <ion-button size="small" color="dark" fill="clear" (click)="setPhase(Phase.SET_WHITE_LIGHT)" [disabled]="whiteLight === undefined">
+        Reset <ion-icon [name]="darkMode ? 'square' : 'square-outline'" color="dark"></ion-icon>
+      </ion-button>
+      <ion-button size="small" color="danger" fill="clear" (click)="setPhase(Phase.SET_RED_TRIANGLE)" [disabled]="redTriangle === undefined">
+        Reset <ion-icon name="triangle" color="danger"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+
+  <div *ngIf="phase === Phase.SET_CIRCLES">
+    <div class="button-row" *ngFor="let _ of [].constructor(2); let row = index">
+      <ion-button
+        *ngFor="let _ of [].constructor(6); let idx = index"
+        [color]="isGreenCircleButtonClicked(row, idx) ? 'success' : 'light'"
+        [disabled]="isGreenCircleButtonDisabled(row, idx)"
+        (click)="handleGreenCircleClick(row, idx)"
+      >
+        {{ idx + 1 }}
+      </ion-button>
+    </div>
+  </div>
+
+  <span class="advice">
+    {{ advice }}
+  </span>
+</div>
