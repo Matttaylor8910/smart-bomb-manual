@@ -4,7 +4,7 @@ export type Column = 0|1|2|3|4|5;
 // value: possible columns of the other green circle
 // these coordinates are zero-indexed, from left to right
 export const COLUMN_PAIRS: {[key in Column]: Set<Column>} = {
-  0: new Set([0, 5]),
+  0: new Set([0, 2, 5]),
   1: new Set([1, 4]),
   2: new Set([0, 3, 4]),
   3: new Set([2, 4, 5]),
@@ -155,9 +155,9 @@ const GOLF: Maze = {
     {row: 5, col: 1},
   ],
   rows: [
-    [TL, TB, TB, TR, RL, TR],
+    [TL, TB, TB, TR, TL, TR],
     [RL, TL, TRB, BL, RB, RL],
-    [RL, BL, TL, TRB, TL, RB],
+    [BL, RB, TL, TRB, TL, RB],
     [TL, TR, L, TB, RB, TRL],
     [RL, RBL, BL, TB, TR, RL],
     [BL, TB, TB, TB, B, RB],
@@ -183,12 +183,12 @@ const INDIA: Maze = {
     {row: 4, col: 0},
   ],
   rows: [
-    [TRL, T, TB, TB, T, TR],
+    [TRL, TL, TB, TB, T, TR],
     [RL, RL, TL, TRB, RL, RL],
     [L, B, RB, TL, RB, RL],
-    [RL, TRL, T, RB, TBL, R],
+    [RL, TRL, TL, RB, TBL, R],
     [RL, RL, RL, TL, TR, RBL],
-    [BL, RB, BL, RB, BL, RB],
+    [BL, RB, BL, RB, BL, TRB],
   ]
 };
 

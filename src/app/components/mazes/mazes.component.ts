@@ -13,7 +13,7 @@ export class MazesComponent {
   firstGreenCircle?: Column;
   secondGreenCircle?: Column;
 
-  maze: Maze = MAZES['0,0'];
+  maze: Maze;
 
   constructor() {}
 
