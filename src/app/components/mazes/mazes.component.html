@@ -14,9 +14,9 @@
           (click)="handleCellClick(r, c)"
         >
           <div class="cell-number" *ngIf="r === 0">{{ c + 1 }}</div>
-          <ion-icon name="ellipse-outline" color="success" *ngIf="hasGreenCircle(r, c)"></ion-icon>
-          <ion-icon [name]="darkMode ? 'square' : 'square-outline'" color="dark" *ngIf="hasWhiteLight(r, c)"></ion-icon>
-          <ion-icon name="triangle" color="danger" *ngIf="hasRedTriangle(r, c)"></ion-icon>
+          <ion-icon class="circle" name="ellipse-outline" color="success" *ngIf="hasGreenCircle(r, c)"></ion-icon>
+          <ion-icon class="light" [name]="darkMode ? 'square' : 'square-outline'" color="dark" *ngIf="hasWhiteLight(r, c)"></ion-icon>
+          <ion-icon class="triangle" name="triangle" color="danger" *ngIf="hasRedTriangle(r, c)"></ion-icon>
         </div>
       </div>
     </div>

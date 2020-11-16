@@ -51,7 +51,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 25px;
         width: 44px;
         height: 44px;
         padding: 1px;
@@ -82,6 +81,22 @@
         &.selectable:hover:not([disabled]) {
           background: #ddd;
           cursor: pointer;
+        }
+
+        ion-icon {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 20px;
+
+          &.circle {
+            font-size: 40px;
+          }
+
+          &.triangle {
+            padding-bottom: 3px;
+          }
         }
       }
     }
