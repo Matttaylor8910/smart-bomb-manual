@@ -1,1 +1,13 @@
-<iframe width="600" height="540" src="https://ktane-solver.droppages.com/maze.html" style="background: white;"></iframe>
+<div class="root">
+  <span>Select the columns of the green circles.</span>
+  <div class="button-row" *ngFor="let _ of [].constructor(2); let row = index">
+    <ion-button
+      *ngFor="let _ of [].constructor(6); let idx = index"
+      [color]="isGreenCircleButtonClicked(row, idx) ? 'success' : 'light'"
+      [disabled]="isGreenCircleButtonDisabled(row, idx)"
+      (click)="handleGreenCircleClick(row, idx)"
+    >
+      {{ idx + 1 }}
+    </ion-button>
+  </div>
+</div>

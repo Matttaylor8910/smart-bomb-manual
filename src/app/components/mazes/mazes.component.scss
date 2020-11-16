@@ -1,0 +1,21 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  height: 100%;
+  padding: 10px 5px;
+
+  span {
+    text-align: center;
+  }
+
+  .button-row {
+    display: flex;
+    justify-content: space-between;
+
+    ion-button {
+      flex-grow: 1;
+    }
+  }
+}
