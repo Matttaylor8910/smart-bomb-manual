@@ -1,0 +1,114 @@
+.module-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+
+  .inputs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    ion-button {
+      margin: 0 5px;
+    }
+
+    .dot,
+    .dash {
+      height: 50px;
+      width: 50px;
+      font-size: 85px;
+      --padding-start: 6px;
+      --padding-end: 6px;
+    }
+
+    .dot {
+      --padding-bottom: 50px;
+    }
+
+    .dash {
+      --padding-bottom: 16px;
+    }
+  }
+
+  .preview {
+    width: 64px;
+    height: 50px;
+    margin: 0 1px;
+    border: 1px solid var(--ion-color-light);
+    border-radius: 4px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    .input {
+      display: flex;
+      padding: 7px 0;
+
+      .dot, .dash {
+        height: 6px;
+        background: var(--ion-color-dark);
+        margin: 0 1px;
+      }
+
+      .dot {
+        width: 6px;
+        border-radius: 50%;
+      }
+
+      .dash {
+        width: 12px;
+      }
+    }
+
+    .letter {
+      font-size: 22px;
+      font-weight: bold;
+      line-height: 28px;
+    }
+  }
+
+  .letters {
+    display: flex;
+
+    .letter {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .outputs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .possibility {
+      display: flex;
+      margin: 3px 8px;
+      border: 1px solid var(--ion-color-dark);
+      opacity: .1;
+
+      &.possible {
+        opacity: 1;
+      }
+
+      .word {
+        width: 80px;
+        padding: 2px 5px;
+        border-right: 1px solid var(--ion-color-dark);
+      }
+
+      .frequency {
+        padding: 2px 8px;
+        background: var(--ion-color-light);
+        color: var(--ion-color-primary);
+        font-weight: bold;
+      }
+    }
+  }
+}

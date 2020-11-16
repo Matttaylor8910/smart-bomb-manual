@@ -1,1 +1,39 @@
-<iframe width="840" height="540" src="https://ktane-solver.droppages.com/morse_code.html" style="background: white;"></iframe>
+<div class="module-container">
+  <div class="inputs">
+    <ion-button class="dot" color="light" (click)="addDot()" [disabled]="inputDisabled">.</ion-button>
+    <ion-button class="dash" color="light" (click)="addDash()" [disabled]="inputDisabled">-</ion-button>
+    <div class="preview">
+      <div class="input">
+        <div [class.dash]="symbol === Morse.DASH" [class.dot]="symbol === Morse.DOT" *ngFor="let symbol of input"></div>
+      </div>
+      <div class="letter">{{ letter }}</div>
+    </div>
+    <ion-button color="light" [disabled]="!letter" (click)="add()">
+      Add
+    </ion-button>
+    <ion-button color="danger" fill="clear" [disabled]="input.length === 0" (click)="clear()">
+      Clear
+    </ion-button>
+  </div>
+
+  <div class="letters">
+    <div class="letter" *ngFor="let item of letters; let i = index">
+      <div class="preview">
+        <div class="input">
+          <div [class.dash]="symbol === Morse.DASH" [class.dot]="symbol === Morse.DOT" *ngFor="let symbol of item.morse"></div>
+        </div>
+        <div class="letter">{{ item.letter }}</div>
+      </div>
+      <ion-button fill="clear" color="danger" (click)="removeLetter(i)">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+
+  <div class="outputs">
+    <div class="possibility" [class.possible]="isPossible(item)" *ngFor="let item of WORDS">
+      <div class="word">{{ item.word }}</div>
+      <div class="frequency">{{ item.frequency }}</div>
+    </div>
+  </div>
+</div>
