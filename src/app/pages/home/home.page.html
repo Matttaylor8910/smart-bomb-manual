@@ -14,10 +14,10 @@
 
 <ion-content>
   <div class="layout-container">
-    <div class="sidebar">
+    <div class="sidebar" [class.shown]="!showModules">
       <app-bomb-state></app-bomb-state>
     </div>
-    <div class="modules">
+    <div class="modules" [class.shown]="showModules">
       <app-module-window
         *ngFor="let module of moduleService.loadedModules; index as i"
         [module]="module.name"
@@ -31,3 +31,13 @@
     </div>
   </div>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-segment [value]="selectedTab.label">
+      <ion-segment-button [value]="tab.label" *ngFor="let tab of tabs" (click)="selectTab(tab)">
+        <ion-label>{{ tab.label }}</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-footer>

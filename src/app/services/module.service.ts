@@ -1,5 +1,6 @@
 import {ApplicationRef, Injectable} from '@angular/core';
 import {BombStateService} from './bomb-state.service';
+import {UtilService} from './util.service';
 
 export enum ModuleName {
   COMPLICATED_WIRES = 'Complicated Wires',
@@ -95,7 +96,10 @@ export const MODULES: {[key in ModuleName]: Module} = {
 export class ModuleService {
   loadedModules: Module[] = this.loadModules();
 
-  constructor(private readonly appRef: ApplicationRef) {}
+  constructor(
+      private readonly appRef: ApplicationRef,
+      private readonly utilService: UtilService,
+  ) {}
 
   addModule(module: ModuleName, index: number = 0) {
     this.loadedModules.splice(index, 0, {...MODULES[module]});
@@ -119,6 +123,7 @@ export class ModuleService {
 
   closeAllModules() {
     this.loadedModules = [];
+    this.utilService.showToast('Closed all modules');
   }
 
   private saveModules() {

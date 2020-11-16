@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
+import {ToastController} from '@ionic/angular';
 import {ModuleService} from './module.service';
+import {UtilService} from './util.service';
 
 @Injectable({providedIn: 'root'})
 export class BombStateService {
@@ -13,11 +15,12 @@ export class BombStateService {
 
   constructor(
       private readonly moduleService: ModuleService,
+      private readonly utilService: UtilService,
   ) {
-    this.resetBomb();
+    this.resetBomb(false);
   }
 
-  resetBomb() {
+  resetBomb(showToast: boolean = true) {
     this.carIndicator = false;
     this.batteries = undefined;
     this.frkIndicator = false;
@@ -27,6 +30,10 @@ export class BombStateService {
     this.strikes = undefined;
 
     this.reloadAllModules();
+
+    if (showToast) {
+      this.utilService.showToast('Reset the bomb');
+    }
   }
 
   private reloadAllModules() {

@@ -54,13 +54,29 @@ ion-toolbar {
   }
 }
 
+ion-footer {
+  display: none;
+}
+
 @media (max-width: 600px) {
   .layout-container {
-    .sidebar {
+    .sidebar, .modules {
+      width: 100%;
+      height: 100%;
+    }
+
+    .sidebar:not(.shown) {
+      display: none;
+    }
+    .modules:not(.shown) {
       display: none;
     }
     app-module-window {
       margin: 10px 0;
     }
+  }
+
+  ion-footer {
+    display: initial;
   }
 }
