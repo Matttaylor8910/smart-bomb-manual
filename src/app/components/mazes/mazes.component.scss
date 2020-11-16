@@ -24,7 +24,14 @@
     }
   }
 
+  .maze-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .maze {
+    margin-top: 25px;
     border: 1px solid var(--ion-color-dark);
     width: 266px;
     height: 266px;
@@ -70,6 +77,11 @@
         &.left {
           border-left: 1px solid var(--ion-color-dark);
           padding-left: 0;
+        }
+
+        &.selectable:hover:not([disabled]) {
+          background: #ddd;
+          cursor: pointer;
         }
       }
     }

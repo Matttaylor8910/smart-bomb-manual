@@ -33,6 +33,8 @@ function MazeCell(mc: Partial<MazeCell>): MazeCell {
 }
 
 // Helper constants to make typing in the mazes and reading them less painful
+// Empty
+const E = MazeCell({});
 // One wall
 const T = MazeCell({top: true});
 const R = MazeCell({right: true});
@@ -51,14 +53,14 @@ const TRL = MazeCell({top: true, right: true, left: true});
 const TBL = MazeCell({top: true, bottom: true, left: true});
 const RBL = MazeCell({right: true, bottom: true, left: true});
 
-type Row = [MazeCell, MazeCell, MazeCell, MazeCell, MazeCell, MazeCell];
+export type Row = [MazeCell, MazeCell, MazeCell, MazeCell, MazeCell, MazeCell];
 export interface Coordinate {
   row: number;
   col: number;
 }
 export interface Maze {
   circles: [Coordinate, Coordinate];
-  rows: [Row, Row, Row, Row, Row, Row];
+  rows: Row[];
 }
 
 // There are nine possible mazes
@@ -191,6 +193,20 @@ const INDIA: Maze = {
     [BL, RB, BL, RB, BL, TRB],
   ]
 };
+const EMPTY: Maze = {
+  circles: [
+    {row: -1, col: -1},
+    {row: -1, col: -1},
+  ],
+  rows: [
+    [TL, T, T, T, T, TR],
+    [L, E, E, E, E, R],
+    [L, E, E, E, E, R],
+    [L, E, E, E, E, R],
+    [L, E, E, E, E, R],
+    [BL, B, B, B, B, RB],
+  ]
+}
 
 // key: column pair for a given maze (the toString() of Column[])
 // value: the maze
@@ -211,6 +227,7 @@ export const MAZES: {[key: string]: Maze} = {
   '3,2': HOTEL,
   '0,2': INDIA,
   '2,0': INDIA,
+  EMPTY: EMPTY,
 };
 
 enum Direction {

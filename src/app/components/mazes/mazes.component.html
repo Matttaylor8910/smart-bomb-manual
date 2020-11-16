@@ -1,4 +1,37 @@
 <div class="root">
+  <div class="maze-container">
+    <div class="maze">
+      <div class="row" *ngFor="let row of rows; let r = index">
+        <div class="row-number">{{ r + 1 }}</div>
+        <div
+          *ngFor="let cell of row; let c = index"
+          class="cell"
+          [class.top]="cell.top"
+          [class.right]="cell.right"
+          [class.bottom]="cell.bottom"
+          [class.left]="cell.left"
+          [class.selectable]="selectable"
+          (click)="handleCellClick(r, c)"
+        >
+          <div class="cell-number" *ngIf="r === 0">{{ c + 1 }}</div>
+          <ion-icon name="ellipse-outline" color="success" *ngIf="hasGreenCircle(r, c)"></ion-icon>
+          <ion-icon [name]="darkMode ? 'square' : 'square-outline'" color="dark" *ngIf="hasWhiteLight(r, c)"></ion-icon>
+          <ion-icon name="triangle" color="danger" *ngIf="hasRedTriangle(r, c)"></ion-icon>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="button-row">
+      <ion-button size="small" color="light">
+        Set <ion-icon name="ellipse-outline" color="success"></ion-icon>
+      </ion-button>
+      <ion-button size="small">
+        Set <ion-icon class="always-light" name="ellipse" color="light"></ion-icon>
+      </ion-button>
+      <ion-button size="small" color="danger">Set Triangle</ion-button>
+    </div> -->
+  </div>
+
   <div>
     <div class="button-row" *ngFor="let _ of [].constructor(2); let row = index">
       <ion-button
@@ -10,26 +43,6 @@
         {{ idx + 1 }}
       </ion-button>
     </div>
-  </div>
-
-  <div class="maze">
-    <ng-container *ngIf="maze">
-      <div class="row" *ngFor="let row of maze.rows; let r = index">
-        <div class="row-number">{{ r + 1 }}</div>
-        <div
-          *ngFor="let cell of row; let c = index"
-          class="cell"
-          [class.top]="cell.top"
-          [class.right]="cell.right"
-          [class.bottom]="cell.bottom"
-          [class.left]="cell.left"
-          (click)="handleCellClick(r, c)"
-        >
-          <div class="cell-number" *ngIf="r === 0">{{ c + 1 }}</div>
-          <ion-icon name="ellipse-outline" color="success" *ngIf="hasCircle(r, c)"></ion-icon>
-        </div>
-      </div>
-    </ng-container>
   </div>
 
   <span class="advice">

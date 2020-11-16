@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 
-import {Column, COLUMN_PAIRS, Coordinate, Maze, MAZES} from './mazes-helpers';
+import {Column, COLUMN_PAIRS, Coordinate, Maze, MAZES, Row} from './mazes-helpers';
 
 enum Phase {
   SET_CIRCLES = 'SET_CIRCLES',
@@ -15,15 +15,24 @@ enum Phase {
   styleUrls: ['./mazes.component.scss'],
 })
 export class MazesComponent {
+  Phase = Phase;
+
   firstGreenCircle?: Column;
   secondGreenCircle?: Column;
   whiteLight: Coordinate;
   redTriangle: Coordinate;
 
   maze: Maze;
-  phase: Phase = Phase.SET_CIRCLES;
+  phase: Phase;
 
-  constructor() {}
+  constructor() {
+    this.setNextPhase();
+  }
+
+  // Move to a service as soon as another module wants to make use of this
+  get darkMode(): boolean {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
 
   get advice(): string {
     switch (this.phase) {
@@ -36,8 +45,16 @@ export class MazesComponent {
       case Phase.SHOW_ANSWER:
         return 'BRIK SEND HELP PLS';
       default:
-        'The devs messed up, file a bug'
+        return 'The devs messed up, file a bug';
     }
+  }
+
+  get selectable(): boolean {
+    return [Phase.SET_WHITE_LIGHT, Phase.SET_RED_TRIANGLE].includes(this.phase);
+  }
+
+  get rows(): Row[] {
+    return this.maze ? this.maze.rows : MAZES.EMPTY.rows;
   }
 
   isGreenCircleButtonClicked(row: number, idx: Column): boolean {
@@ -68,26 +85,24 @@ export class MazesComponent {
       this.firstGreenCircle = idx;
       // Whenever the first row changes, clear the second row
       this.secondGreenCircle = undefined;
-      this.phase = Phase.SET_CIRCLES;
     } else {
       this.secondGreenCircle = idx;
-      this.phase = Phase.SET_WHITE_LIGHT;
     }
 
+    this.setNextPhase();
     this.setMaze();
   }
 
   handleCellClick(row: number, col: number) {
     if (this.phase === Phase.SET_WHITE_LIGHT) {
       this.whiteLight = {row, col};
-      this.phase = Phase.SET_RED_TRIANGLE;
     } else if (this.phase === Phase.SET_RED_TRIANGLE) {
       this.redTriangle = {row, col};
-      this.phase = Phase.SHOW_ANSWER;
     }
+    this.setNextPhase();
   }
 
-  hasCircle(row: number, col: number): boolean {
+  hasGreenCircle(row: number, col: number): boolean {
     if (this.maze) {
       return !!this.maze.circles.find(circle => {
         return circle.row === row && circle.col === col;
@@ -97,7 +112,29 @@ export class MazesComponent {
     return false;
   }
 
+  hasWhiteLight(row: number, col: number): boolean {
+    return this.whiteLight && this.whiteLight.row === row &&
+        this.whiteLight.col === col;
+  }
+
+  hasRedTriangle(row: number, col: number): boolean {
+    return this.redTriangle && this.redTriangle.row === row &&
+        this.redTriangle.col === col;
+  }
+
   private setMaze() {
     this.maze = MAZES[`${this.firstGreenCircle},${this.secondGreenCircle}`];
+  }
+
+  private setNextPhase() {
+    if ([this.firstGreenCircle, this.secondGreenCircle].includes(undefined)) {
+      this.phase = Phase.SET_CIRCLES;
+    } else if (!this.whiteLight) {
+      this.phase = Phase.SET_WHITE_LIGHT;
+    } else if (!this.redTriangle) {
+      this.phase = Phase.SET_RED_TRIANGLE;
+    } else {
+      this.phase = Phase.SHOW_ANSWER;
+    }
   }
 }
