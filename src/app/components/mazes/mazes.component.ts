@@ -26,10 +26,12 @@ export class MazesComponent {
   }
 
   isGreenCircleButtonDisabled(row: number, idx: Column): boolean {
-    if (row === 0 && this.secondGreenCircle === undefined ||
-        row === 1 && this.firstGreenCircle === undefined) {
-      // If the other row is undefined, then don't disable anything in this row
+    if (row === 0) {
+      // The first row is never disabled
       return false;
+    } else if (row === 1 && this.firstGreenCircle === undefined) {
+      // If the first row is undefined, then disable the entire second row
+      return true;
     } else {
       // Otherwise, consult our possible values map
       if (row === 0) {
@@ -47,6 +49,8 @@ export class MazesComponent {
   handleGreenCircleClick(row: number, idx: Column) {
     if (row === 0) {
       this.firstGreenCircle = idx;
+      // Whenever the first row changes, clear the second row
+      this.secondGreenCircle = undefined;
     } else {
       this.secondGreenCircle = idx;
     }
