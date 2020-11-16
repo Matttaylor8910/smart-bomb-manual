@@ -183,12 +183,12 @@ const INDIA: Maze = {
     {row: 4, col: 0},
   ],
   rows: [
-    [TRL, T, TB, TB, T, TR],
+    [TRL, TL, TB, TB, T, TR],
     [RL, RL, TL, TRB, RL, RL],
     [L, B, RB, TL, RB, RL],
-    [RL, TRL, T, RB, TBL, R],
+    [RL, TRL, TL, RB, TBL, R],
     [RL, RL, RL, TL, TR, RBL],
-    [BL, RB, BL, RB, BL, RB],
+    [BL, RB, BL, RB, BL, TRB],
   ]
 };
 
