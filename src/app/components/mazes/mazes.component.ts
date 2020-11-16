@@ -34,15 +34,9 @@ export class MazesComponent {
       return true;
     } else {
       // Otherwise, consult our possible values map
-      if (row === 0) {
-        // We are checking for first row, so use the second row's value in our
-        // map
-        return !COLUMN_PAIRS[this.secondGreenCircle].has(idx);
-      } else {
-        // We are checking for second row, so use the first row's value in our
-        // map
-        return !COLUMN_PAIRS[this.firstGreenCircle].has(idx);
-      }
+      // We are checking for second row, so use the first row's value in our
+      // map
+      return !COLUMN_PAIRS[this.firstGreenCircle].has(idx);
     }
   }
 
