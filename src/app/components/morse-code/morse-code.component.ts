@@ -78,6 +78,8 @@ export class MorseCodeComponent {
   input: string[] = [];
   letters: MorseLetter[] = [];
 
+  private letterMap: {[letter: string]: number} = {};
+
   constructor() {}
 
   get letter(): string {
@@ -100,6 +102,7 @@ export class MorseCodeComponent {
   add() {
     const key = this.input.join('');
     this.letters.push({morse: [...this.input], letter: LETTERS[key]});
+    this.setLetterMap();
     this.clear();
   }
 
@@ -109,14 +112,37 @@ export class MorseCodeComponent {
 
   removeLetter(index: number) {
     this.letters.splice(index, 1);
+    this.setLetterMap();
   }
 
   isPossible(item: WordFrequency): boolean {
-    for (const letter of this.letters) {
-      if (!item.word.includes(letter.letter)) {
+    const letterCounts = this.getLetterMap(item.word.split(''));
+    const uniqueLetters = Object.keys(this.letterMap);
+
+    // for each unique letter that we've recieved as input, make sure that this
+    // word has the correct count of that letter
+    for (const entry of Object.entries(this.letterMap)) {
+      const letter = entry[0];
+      const count = entry[1];
+
+      const thisWordLetterCount = letterCounts[letter] || 0;
+      if (thisWordLetterCount < count) {
         return false;
       }
     }
     return true;
+  }
+
+  private getLetterMap(letters: string[]): {[letter: string]: number} {
+    const map = {};
+    for (const letter of letters) {
+      map[letter] = (map[letter] || 0) + 1;
+    }
+    return map;
+  }
+
+  private setLetterMap() {
+    const letters = this.letters.map(l => l.letter);
+    this.letterMap = this.getLetterMap(letters);
   }
 }
