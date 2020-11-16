@@ -115,10 +115,10 @@ const GOLF: Maze = [
   [],
 ];
 const HOTEL: Maze = [
-  [],
-  [],
-  [],
-  [],
+  [TRL, TL, TB, TR, TL, TR],
+  [L, B, TRB, BL, RB, RL],
+  [RL, TL, TB, TB, TR, RL],
+  [RL, BL, TR, TBL, B, RB],
   [],
   [],
 ];
